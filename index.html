@@ -1,0 +1,1391 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>AD STYLES</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=DM+Mono:wght@400;500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  /* Layout: a cream brand hero where the logo assembles on scroll, then the collections:
+     photo hanger showrooms for shirts and T-shirts, and shop grids for trousers, jeans and shoes. */
+  --ink:#0a0a0b; --ink-2:#151517; --paper:#f4f4f1; --paper-2:#e4e4df;
+  --cream:#f6e6d2; --cream-2:#efd9c0; --brand:#982826;
+  --mute-d:#a5a5a1; --mute-l:#5a5a57;
+  --line-d:rgba(244,244,241,.16); --line-l:rgba(10,10,11,.16);
+  --f-display:'Bodoni Moda','Bodoni 72',Didot,'Times New Roman',serif;
+  --f-body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --nav:62px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav)}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+main{overflow-x:clip}
+button{font:inherit;color:inherit}
+img{display:block}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+body.lock{overflow:hidden}
+
+/* progress + nav */
+.prog{position:fixed;left:0;right:0;top:0;height:2px;background:var(--brand);transform-origin:0 50%;transform:scaleX(var(--p,0));z-index:70;pointer-events:none}
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;height:calc(var(--nav) + env(safe-area-inset-top,0px));display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:env(safe-area-inset-top,0px) max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));
+  background:rgba(246,230,210,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--ink);border-bottom:1px solid rgba(152,40,38,.16)}
+.nav a{color:inherit;text-decoration:none}
+.nav>.brand{display:block;flex:none;height:30px;aspect-ratio:3.8444;opacity:0;transition:opacity .6s}
+.nav>.brand svg{display:block;width:100%;height:100%;fill:var(--brand);overflow:visible}
+.lg-defs{position:absolute;width:0;height:0;overflow:hidden}
+body.logo-in .nav>.brand,.nav.solid>.brand{opacity:1}
+.nav ul{display:flex;gap:clamp(14px,2.4vw,34px);list-style:none;margin:0;padding:0}
+.nav li a{position:relative;font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;padding:8px 0}
+.nav li a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--brand);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease)}
+.nav li a:hover::after,.nav li a[aria-current=true]::after{transform:scaleX(1)}
+.nav li a[aria-current=true]{color:var(--brand)}
+.navr{display:flex;align-items:center;gap:10px}
+.bagbtn{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer;font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;transition:background .3s,color .3s}
+.bagbtn b{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:var(--brand);color:#fff;font-size:11px;font-weight:500;padding:0 5px}
+.bagbtn:hover{background:var(--ink);color:var(--cream)}
+.burger{display:none;background:none;border:1px solid var(--ink);border-radius:999px;padding:8px 14px;font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+@media(max-width:960px){
+  .burger{display:inline-block}
+  .nav ul{position:fixed;left:0;right:0;top:calc(var(--nav) + env(safe-area-inset-top,0px));flex-direction:column;gap:0;background:var(--cream);padding:6px 16px 14px;border-bottom:1px solid rgba(152,40,38,.2);transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .35s,transform .45s var(--ease)}
+  .nav.open ul{opacity:1;transform:none;pointer-events:auto}
+  .nav li a{display:block;padding:15px 0;border-bottom:1px solid rgba(10,10,11,.1);font-size:13px}
+}
+
+/* bands */
+.band{position:relative;padding-block:clamp(72px,11vw,150px)}
+.dark{background:var(--ink);color:var(--paper);--mute:var(--mute-d);--line:var(--line-d)}
+.light{background:var(--paper);color:var(--ink);--mute:var(--mute-l);--line:var(--line-l)}
+.light2{background:var(--paper-2);color:var(--ink);--mute:var(--mute-l);--line:var(--line-l)}
+.wrap{max-width:1280px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{margin:0;font:500 12px/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.h2{margin:18px 0 0;font-family:var(--f-display);font-weight:400;font-size:clamp(42px,7.4vw,104px);line-height:.94;letter-spacing:-.025em;text-wrap:balance}
+.h2 em{font-style:italic}
+.lead{margin:22px 0 0;max-width:54ch;color:var(--mute);font-size:clamp(16px,1.6vw,19px)}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:13px 20px;border-radius:999px;border:1px solid currentColor;background:none;color:inherit;text-decoration:none;cursor:pointer;transition:background .35s var(--ease),color .35s var(--ease),opacity .3s}
+.dark .btn:hover{background:var(--paper);color:var(--ink)}
+.light .btn:hover,.light2 .btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.light .btn.solid,.light2 .btn.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.solid:hover{opacity:.82}
+.btn.brand{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.brand:hover{background:#7a1d1b;color:#fff;opacity:1}
+.btn.sm{padding:9px 14px;font-size:11px}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* reveal system */
+.js .rv{opacity:0;transform:translateY(32px);transition:opacity .95s var(--ease),transform .95s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.js .rv.in{opacity:1;transform:none}
+.js .band.open{clip-path:inset(5% 2.5% 0 2.5% round 44px 44px 0 0);transition:clip-path 1.3s var(--ease)}
+.js .band.open.in{clip-path:inset(0 0 0 0 round 0)}
+
+/* ===== HERO: the AD STYLES logo gathers as you scroll ===== */
+.hero{position:relative;height:215vh;height:215svh;background:#f4e3cc}
+.hero-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  padding:calc(var(--nav) + env(safe-area-inset-top,0px) + 22px) max(clamp(20px,5vw,72px),env(safe-area-inset-right,0px)) calc(64px + env(safe-area-inset-bottom,0px)) max(clamp(20px,5vw,72px),env(safe-area-inset-left,0px));
+  background:url(data:image/png;base64,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),url(img/hero-bg.webp) center/cover no-repeat,#f6e6d0}
+.hero-lights{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hl-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,22,18,0) 50%,rgba(74,22,18,.2) 100%);opacity:0}
+.hero-frame{position:absolute;inset:calc(var(--nav) + env(safe-area-inset-top,0px) + 12px) max(clamp(10px,2vw,28px),env(safe-area-inset-right,0px)) clamp(10px,2vw,28px) max(clamp(10px,2vw,28px),env(safe-area-inset-left,0px));border:1px solid rgba(152,40,38,.18);pointer-events:none;z-index:1}
+.hero-body{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;max-width:1180px;text-align:center}
+.hero .hero-eye{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,20px);color:rgba(112,28,26,.9);font-size:clamp(10px,.95vw,12px);letter-spacing:.28em}
+.hero-eye i{width:clamp(16px,3vw,44px);height:1px;background:currentColor;opacity:.45}
+.logo-stage{position:relative;isolation:isolate;width:min(100%,1080px,max(300px,calc((100vh - 500px)*3.844)),max(300px,calc((100svh - 500px)*3.844)));aspect-ratio:692/180;margin:clamp(34px,7vh,72px) 0 clamp(30px,6.5vh,64px);flex:none}
+.logo-svg,.lg-pieces{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.logo-svg{display:block;fill:url(#lg-grad)}
+.logo-svg use,.lp path{fill:url(#lg-grad)}
+.lg-pieces{visibility:hidden;pointer-events:none}
+.lp{position:absolute;display:block;overflow:visible;will-change:transform,opacity;backface-visibility:hidden}
+.js .lg-pieces{visibility:visible}
+.js .lp{opacity:0}
+.js .logo-stage .lg-final{opacity:0}
+.js .logo-stage.final .lg-final{opacity:1}
+.js .logo-stage.final .lg-pieces{visibility:hidden}
+.lg-sheen{pointer-events:none}
+.logo-glow{position:absolute;inset:0;z-index:-1;pointer-events:none;filter:blur(20px);opacity:.85;transition:opacity 1.2s var(--ease)}
+.logo-glow svg{display:block;width:100%;height:100%;fill:rgba(140,30,28,.22);transform:translateY(3%);overflow:visible}
+.js .logo-glow{opacity:0}
+.js .logo-stage.final .logo-glow{opacity:.9}
+.sheen{opacity:0}
+.logo-stage.shine .sheen{opacity:1;animation:sheen 2.4s .15s var(--ease) 1 both}
+@keyframes sheen{from{transform:translateX(0)}to{transform:translateX(980px)}}
+.hero-rule{display:flex;align-items:center;gap:14px;width:min(300px,56%);margin:0 0 clamp(18px,3.2vh,30px)}
+.hero-rule i{flex:1;height:1px;background:linear-gradient(90deg,rgba(152,40,38,0),rgba(152,40,38,.6))}
+.hero-rule i:last-child{transform:scaleX(-1)}
+.hero-rule b{width:7px;height:7px;transform:rotate(45deg);background:var(--brand)}
+.hero-tag{margin:0;font:italic 400 clamp(26px,3.3vw,46px)/1.08 var(--f-display);color:#2a1612;letter-spacing:-.012em;text-wrap:balance}
+.hero-sub{margin:14px 0 0;max-width:46ch;color:#59443a;font-size:clamp(14px,1.25vw,16.5px);line-height:1.6;text-wrap:balance}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(22px,4vh,36px);color:var(--ink)}
+.hero-cta .btn{padding:15px 28px}
+.hero-cta .btn.brand{box-shadow:0 14px 26px -14px rgba(152,40,38,.85)}
+.hero-cta .btn:not(.brand):hover{background:var(--ink);color:var(--cream)}
+.js .hero:not(.still) .hero-eye,.js .hero:not(.still) .hero-rule,.js .hero:not(.still) .hero-tag,.js .hero:not(.still) .hero-sub,.js .hero:not(.still) .hero-cta{animation:heroin 1s var(--ease) both}
+.js .hero:not(.still) .hero-eye{animation-delay:.1s}
+.js .hero:not(.still) .hero-rule{animation-delay:.95s}
+.js .hero:not(.still) .hero-tag{animation-delay:1.05s}
+.js .hero:not(.still) .hero-sub{animation-delay:1.2s}
+.js .hero:not(.still) .hero-cta{animation-delay:1.35s}
+@keyframes heroin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hint{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:2;font:500 11px var(--f-mono);letter-spacing:.24em;text-transform:uppercase;color:rgba(112,28,26,.85);white-space:nowrap;transition:opacity .5s}
+.hint::after{content:"";display:block;width:1px;height:30px;margin:8px auto 0;background:linear-gradient(var(--brand),transparent);animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:0 0}50%{transform:scaleY(1);transform-origin:0 0}51%{transform-origin:0 100%}100%{transform:scaleY(0);transform-origin:0 100%}}
+.hero.still{height:100svh}
+.hero.still .hint{display:none}
+@media(max-width:640px){
+  .hero-stick{background-image:url(data:image/png;base64,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),url(img/hero-bg-m.webp)}
+  .hero-cta{flex-direction:column;align-items:stretch;width:min(100%,300px)}
+  .hero-cta .btn{width:100%}
+  .hero .hero-eye{letter-spacing:.2em}
+  
+}
+@media(max-height:860px){.hint{display:none}}
+@media(max-height:660px){
+  .hero-sub,.hero-rule{display:none}
+  .logo-stage{width:min(100%,1080px,max(280px,calc((100vh - 350px)*3.844)),max(280px,calc((100svh - 350px)*3.844)));margin:34px 0 28px}
+  .hint{display:none}
+}
+
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(70px,12vh,130px);background:linear-gradient(180deg,rgba(10,10,11,0),rgba(10,10,11,.94));pointer-events:none;z-index:3}
+.hero.still::after{display:none}
+
+/* marquee */
+.marq{background:var(--ink);color:var(--paper);overflow:hidden;padding:20px 0;white-space:nowrap;border-top:1px solid rgba(152,40,38,.5)}
+.marq .track{display:inline-flex;gap:44px;animation:mq 38s linear infinite;font-family:var(--f-display);font-style:italic;font-size:clamp(26px,4.4vw,48px);line-height:1.1}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+
+/* section headers */
+.sechead{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:28px}
+.rcount{font:500 12px var(--f-mono);letter-spacing:.14em;color:var(--mute);white-space:nowrap}
+.rcount b{font-family:var(--f-display);font-size:clamp(40px,5vw,64px);font-weight:500;color:inherit;margin-right:6px;letter-spacing:0}
+.note{margin:26px 0 0;font:400 11px var(--f-mono);letter-spacing:.08em;color:var(--mute)}
+.nogl{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;font:400 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+
+/* ===== nav: saved hearts ===== */
+.heartbtn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--ink);border-radius:999px;padding:7px 11px;cursor:pointer;color:var(--ink);transition:background .3s,color .3s}
+.heartbtn b{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:var(--brand);color:#fff;font:500 11px var(--f-mono);padding:0 5px}
+.heartbtn:hover{background:var(--ink);color:var(--cream)}
+
+/* ===== photo hanger showrooms: real photographs hung on a rail ===== */
+.room{padding-block:clamp(64px,9vw,120px) clamp(40px,5vw,72px)}
+.rackwrap{--s:.5;--rt:62px;--pad:clamp(24px,6vw,96px);position:relative;margin-top:clamp(24px,3.4vw,44px);overflow:hidden;background:radial-gradient(70% 100% at 50% 0%,var(--wall-hi),var(--wall) 78%)}
+.room.dark .rackwrap{--wall:#2c2b2f;--wall-hi:#47464c;--edge:#0a0a0b;--tagc:var(--paper);--tagbg:rgba(255,255,255,.09);--offc:#f08f89}
+.room.light .rackwrap{--wall:#c7c2be;--wall-hi:#dddad6;--edge:#f4f4f1;--tagc:var(--ink);--tagbg:rgba(10,10,11,.07);--offc:var(--brand)}
+.rackwrap::before,.rackwrap::after{content:"";position:absolute;top:0;bottom:0;width:clamp(30px,9vw,150px);z-index:30;pointer-events:none;transition:opacity .4s}
+.rackwrap::before{left:0;background:linear-gradient(to right,var(--edge),transparent)}
+.rackwrap::after{right:0;background:linear-gradient(to left,var(--edge),transparent)}
+.rackwrap.at-start::before,.rackwrap.at-end::after{opacity:0}
+.rackwrap .rarrow{transition:opacity .35s,background .3s,color .3s}
+.rackwrap.at-start .rarrow.prev,.rackwrap.at-end .rarrow.next{opacity:0;pointer-events:none}
+.rack{position:relative;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab;outline:none}
+.rack::-webkit-scrollbar{display:none}
+.rack.drag{cursor:grabbing;user-select:none}
+.rack:focus-visible{outline:2px solid currentColor;outline-offset:-6px}
+.rtrack{position:relative}
+.rail{position:absolute;left:0;right:0;top:calc(var(--rt) - 5px);height:10px;border-radius:5px;z-index:0;background:linear-gradient(#aeb1b7,#4b4d53 42%,#141518);box-shadow:0 14px 20px -6px rgba(0,0,0,.55)}
+.post{position:absolute;top:0;width:9px;height:calc(var(--rt) - 2px);z-index:0;background:linear-gradient(90deg,#26272a,#a0a3a9 45%,#1a1b1e);border-radius:0 0 3px 3px}
+.hg{position:absolute;padding:0;margin:0;border:0;background:none;cursor:pointer;color:inherit;filter:drop-shadow(8px 14px 12px rgba(0,0,0,.42));transition:filter .5s var(--ease)}
+.hgi{display:block;width:100%;height:100%;transform-origin:var(--ox) var(--oy);will-change:transform}
+.hg img{display:block;width:100%;height:100%;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.hg:hover,.hg.hot,.hg:focus-visible{filter:drop-shadow(15px 26px 18px rgba(0,0,0,.55)) brightness(1.07)}
+.hg:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.hgi.swing{animation:swing 1.9s var(--ease)}
+.rackwrap.in:not(.settled) .hgi{animation:sway 2.8s var(--ease) backwards;animation-delay:calc(var(--k)*150ms)}
+@keyframes swing{0%{transform:rotate(0)}18%{transform:rotate(2.6deg)}40%{transform:rotate(-1.9deg)}62%{transform:rotate(1.1deg)}82%{transform:rotate(-.5deg)}100%{transform:rotate(0)}}
+@keyframes sway{0%{transform:rotate(0)}25%{transform:rotate(1.5deg)}55%{transform:rotate(-1deg)}80%{transform:rotate(.4deg)}100%{transform:rotate(0)}}
+.ttag{position:absolute;display:grid;gap:5px;justify-items:center;align-content:start;text-align:center;background:none;border:0;padding:8px 6px;border-radius:14px;color:var(--tagc);cursor:pointer;transition:background .35s}
+.ttag:hover,.ttag.hot{background:var(--tagbg)}
+.ttag .tn{font:500 clamp(14px,1.25vw,17px)/1.15 var(--f-display);text-wrap:balance}
+.ttag .tp{display:flex;flex-wrap:wrap;gap:2px 8px;justify-content:center;align-items:baseline;font:500 12px var(--f-mono)}
+.ttag .tp b{font-weight:500}
+.ttag .tp s{opacity:.55;font-weight:400}
+.ttag .tp em{font-style:normal;color:var(--offc);font-size:11px}
+.rhint{margin:18px 0 0;font:400 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.round{width:42px;height:42px;border-radius:50%;border:1px solid currentColor;background:none;cursor:pointer;display:grid;place-items:center;transition:background .3s,color .3s}
+.rarrow{position:absolute;top:44%;z-index:31;margin-top:-21px;background:rgba(10,10,11,.55);backdrop-filter:blur(6px);color:#f4f4f1}
+.rarrow.prev{left:max(12px,env(safe-area-inset-left,0px))}.rarrow.next{right:max(12px,env(safe-area-inset-right,0px))}
+.rarrow:hover{background:var(--paper);color:var(--ink)}
+@media(max-width:700px){.rackwrap{--rt:54px}.rarrow{display:none}}
+
+/* ===== shop grids ===== */
+.shopbody .tools:first-child{margin-top:clamp(28px,4vw,48px)}
+.room .shopbody .tools{margin-top:clamp(34px,5vw,60px)}
+.tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 20px;margin-top:clamp(28px,4vw,48px);padding-bottom:18px;border-bottom:1px solid var(--line)}
+.fchips{display:flex;gap:8px;flex-wrap:wrap}
+.fchip{background:none;border:1px solid var(--line);border-radius:999px;padding:9px 15px;cursor:pointer;font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;transition:background .3s,color .3s,border-color .3s}
+.light .fchip:hover,.light2 .fchip:hover{border-color:var(--ink)}
+.dark .fchip:hover{border-color:var(--paper)}
+.light .fchip[aria-pressed=true],.light2 .fchip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.dark .fchip[aria-pressed=true]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.tools .count{margin:0 auto 0 0}
+.tright{display:flex;align-items:center;gap:14px;font:500 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.sel{appearance:none;-webkit-appearance:none;background:transparent;color:inherit;border:1px solid var(--line);border-radius:999px;padding:9px 34px 9px 15px;font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 17px) 52%,calc(100% - 12px) 52%;background-size:5px 5px;background-repeat:no-repeat;color-scheme:light}
+.dark .sel{color-scheme:dark}
+.sel option{color:#0a0a0b;background:#f4f4f1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,255px),1fr));gap:clamp(14px,1.8vw,26px);margin-top:28px}
+.card{position:relative;background:#fbfaf8;color:var(--ink);border-radius:16px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .6s var(--ease),box-shadow .6s var(--ease);outline-offset:4px}
+.card:hover{transform:translateY(-5px);box-shadow:0 30px 50px -28px rgba(0,0,0,.45)}
+.cimg{position:relative;aspect-ratio:4/5;overflow:hidden;background:radial-gradient(90% 70% at 50% 35%,#f6f4f0,#e1ded7)}
+.shoes .cimg{aspect-ratio:1}
+.cimg img{position:absolute;inset:0;width:100%;height:100%;transition:opacity .55s var(--ease),transform 1.1s var(--ease)}
+.cimg img.fit{object-fit:contain;padding:7% 9% 9%;filter:drop-shadow(0 18px 16px rgba(0,0,0,.24))}
+.cimg img.fill{object-fit:cover}
+.cimg .alt{opacity:0}
+.card:hover .cimg .alt{opacity:1}
+.card:hover .cimg .main{opacity:0}
+.badge{position:absolute;left:10px;z-index:2;font:500 10px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:999px}
+.badge.off{top:10px;background:var(--brand);color:#fff}
+.badge.tag{top:38px;background:var(--ink);color:var(--paper)}
+.wish{position:absolute;right:10px;top:10px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px -6px rgba(0,0,0,.4);transition:transform .35s var(--ease),background .3s,color .3s}
+.wish:hover{transform:scale(1.1)}
+.wish[aria-pressed=true],.vwish[aria-pressed=true]{background:var(--brand);color:#fff}
+.wish[aria-pressed=true] path,.vwish[aria-pressed=true] path{fill:currentColor}
+.qv{position:absolute;left:12px;right:12px;bottom:12px;z-index:3;background:rgba(10,10,11,.92);color:var(--paper);border:0;border-radius:999px;padding:11px;cursor:pointer;font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;transform:translateY(14px);opacity:0;transition:transform .5s var(--ease),opacity .4s,background .3s}
+.card:hover .qv,.card:focus-within .qv{transform:none;opacity:1}
+.qv:hover{background:var(--brand)}
+@media(hover:none){.qv{transform:none;opacity:1;left:auto;right:10px;bottom:10px;padding:8px 12px}}
+.cbody{padding:14px 16px 16px;display:grid;gap:8px;flex:1;align-content:start}
+.cbody .code{font:400 10.5px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute-l)}
+.cbody h3{margin:0;font-family:var(--f-display);font-weight:500;font-size:21px;line-height:1.1}
+.cprice,.mp{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;font:500 14px var(--f-mono)}
+.cprice b{font-weight:500;font-size:16px}
+.cprice s,.mp s{color:#8a8a86;font-weight:400;font-size:12px}
+.cprice em,.mp em{font-style:normal;color:var(--brand);font-size:11px;letter-spacing:.04em}
+.ccol{display:flex;align-items:center;gap:10px;min-height:24px}
+.cdots{display:flex;gap:7px}
+.cdot,.sw2{width:20px;height:20px;border-radius:50%;background:var(--sw);border:1px solid rgba(10,10,11,.3);padding:0;cursor:pointer;transition:transform .3s var(--ease)}
+.cdot:hover,.sw2:hover{transform:scale(1.15)}
+.cdot[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}
+.cname{font:400 11px var(--f-mono);color:var(--mute-l)}
+.csizes{display:flex;flex-wrap:wrap;gap:5px}
+.csz{min-width:34px;height:30px;padding:0 8px;border:1px solid rgba(10,10,11,.22);border-radius:8px;background:none;color:var(--ink);cursor:pointer;font:500 11px var(--f-mono);transition:background .25s,color .25s,border-color .25s}
+.csz:hover:not(:disabled){border-color:var(--ink)}
+.csz[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.csz:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.addc{margin-top:4px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:999px;padding:12px;cursor:pointer;font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;transition:background .3s,border-color .3s}
+.addc:hover{background:var(--brand);border-color:var(--brand)}
+.addc.ok{background:#2f6b3f;border-color:#2f6b3f}
+.empty{grid-column:1/-1;padding:60px 0;text-align:center;color:var(--mute);font:400 13px var(--f-mono);letter-spacing:.08em}
+@media(max-width:600px){
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{border-radius:14px}
+.cbody{padding:11px 11px 13px;gap:7px}
+.cbody h3{font-size:16px}
+.cprice b{font-size:14px}
+.cprice s,.cprice em{font-size:10px}
+.cbody .code{font-size:9.5px;letter-spacing:.08em}
+.cname{display:none}
+.csz{min-width:30px;height:28px;padding:0 6px;font-size:10px}
+.addc{padding:10px;font-size:10px;letter-spacing:.1em}
+.badge{left:8px;font-size:9px;padding:4px 7px}
+.badge.off{top:8px}.badge.tag{top:32px}
+.wish{right:8px;top:8px;width:34px;height:34px}
+.qv{right:8px;bottom:8px;padding:7px 10px;font-size:10px}
+.tools .count{width:100%;order:3}
+}
+
+/* shoes: store layout with a filter rail */
+.sgrid{display:grid;grid-template-columns:250px minmax(0,1fr);gap:clamp(20px,3vw,44px);margin-top:28px;align-items:start}
+.sgrid .grid{margin-top:0}
+@media(max-width:900px){.sgrid{grid-template-columns:minmax(0,1fr)}}
+.fil{border:1px solid var(--line);border-radius:18px;padding:6px 18px;position:sticky;top:calc(var(--nav) + 16px)}
+@media(max-width:900px){.fil{position:static;display:none}.fil.open{display:block}}
+.fgroup{padding:16px 0;border-bottom:1px solid var(--line)}
+.fgroup:last-child{border-bottom:0}
+.fgroup h4{margin:0 0 12px;font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase}
+.checks{display:grid;gap:9px}
+.checks label{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer}
+.checks input{width:16px;height:16px;accent-color:var(--ink);margin:0}
+.checks small{margin-left:auto;font:400 11px var(--f-mono);color:var(--mute)}
+.fsz{display:flex;flex-wrap:wrap;gap:6px}
+.fsz button,.fcol button{height:34px;min-width:40px;padding:0 10px;border:1px solid var(--line);border-radius:9px;background:none;cursor:pointer;font:500 12px var(--f-mono);transition:background .3s,color .3s}
+.fsz button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fcol{display:flex;gap:8px;flex-wrap:wrap}
+.fcol button{width:30px;min-width:30px;height:30px;padding:0;border-radius:50%}
+.fcol button[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}
+.rng{width:100%;accent-color:var(--ink)}
+.rngv{display:flex;justify-content:space-between;font:500 12px var(--f-mono);margin-top:6px;color:var(--mute)}
+.fbtn{display:none}
+@media(max-width:900px){.fbtn{display:inline-flex}}
+.cats{display:flex;align-items:center;gap:8px;margin-top:clamp(28px,4vw,44px);background:#ecebe6;border-radius:18px;padding:10px 12px;color:var(--ink)}
+.cats-in{display:flex;flex:1;gap:4px;overflow-x:auto;scrollbar-width:none;justify-content:space-around}
+.cats-in::-webkit-scrollbar{display:none}
+.cats button{flex:1 0 auto;background:none;border:0;padding:12px 22px;border-radius:12px;cursor:pointer;font:400 clamp(18px,2.2vw,28px) var(--f-display);letter-spacing:.01em;color:var(--mute-l);transition:background .3s,color .3s;white-space:nowrap}
+.cats button[aria-pressed=true]{color:var(--ink);background:#fff;box-shadow:0 8px 20px -14px rgba(0,0,0,.4)}
+.cats button:hover{color:var(--ink)}
+.cats .round{flex:none;width:34px;height:34px;border-color:rgba(10,10,11,.25)}
+.cats .round:hover{background:var(--ink);color:var(--paper)}
+.count{font:400 12px var(--f-mono);letter-spacing:.06em;color:var(--mute);margin:22px 0 0}
+
+/* ===== product page + quick view ===== */
+.viewer{position:fixed;inset:0;z-index:90;background:var(--paper);color:var(--ink);overflow-y:auto;overscroll-behavior:contain;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .4s,transform .5s var(--ease),visibility .4s;--mute:var(--mute-l);--line:var(--line-l);--vbar:58px}
+.viewer.on{opacity:1;visibility:visible;transform:none}
+.viewer .btn:hover{background:var(--ink);color:var(--paper)}
+.viewer .btn.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.viewer .btn.solid:hover{background:var(--brand);border-color:var(--brand);opacity:1}
+.vbar{position:sticky;top:0;z-index:6;height:var(--vbar);display:flex;align-items:center;gap:14px;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));background:rgba(246,230,210,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(152,40,38,.16)}
+.vback{background:none;border:1px solid var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer;font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:background .3s,color .3s}
+.vback:hover{background:var(--ink);color:var(--cream)}
+.vcrumb{flex:1;min-width:0;margin:0;font:400 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute-l);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vwrap{max-width:1280px;margin:0 auto;padding:clamp(16px,2.6vw,36px) max(16px,env(safe-area-inset-right,0px)) clamp(30px,5vw,64px) max(16px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:minmax(0,1.2fr) minmax(340px,.8fr);gap:clamp(24px,4vw,64px);align-items:start}
+.vstage{position:sticky;top:calc(var(--vbar) + 18px);min-width:0}
+.vgal{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;height:min(calc(100vh - var(--vbar) - 40px),780px);height:min(calc(100svh - var(--vbar) - 40px),780px)}
+.vthumbs{display:flex;flex-direction:column;gap:10px;overflow-y:auto;scrollbar-width:none;min-height:0}
+.vthumbs::-webkit-scrollbar{display:none}
+.vthumbs button{flex:none;width:100%;aspect-ratio:4/5;padding:0;border:1px solid rgba(10,10,11,.15);border-radius:12px;overflow:hidden;cursor:pointer;background:#ece9e4;opacity:.72;transition:opacity .3s,border-color .3s}
+.vthumbs button:hover{opacity:1}
+.vthumbs button[aria-pressed=true]{opacity:1;border-color:var(--ink);outline:1px solid var(--ink)}
+.vthumbs button span{display:block;width:100%;height:100%;background:radial-gradient(90% 70% at 50% 35%,#f6f4f0,#e1ded7)}
+.vthumbs img{width:100%;height:100%}
+.vthumbs .fit img{object-fit:contain;padding:6%}.vthumbs .fill img{object-fit:cover}
+.vmain{position:relative;border-radius:18px;overflow:hidden;background:radial-gradient(90% 70% at 50% 35%,#f6f4f0,#e1ded7);min-height:0;cursor:zoom-in;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.vmain.zoomed{cursor:zoom-out;touch-action:none}
+.vmain img{position:absolute;inset:0;width:100%;height:100%;transition:transform .45s var(--ease);-webkit-user-drag:none}
+.vmain img.fit{object-fit:contain;padding:5% 7%;filter:drop-shadow(0 24px 22px rgba(0,0,0,.25))}
+.vmain img.fill{object-fit:cover}
+.vcap{position:absolute;left:14px;bottom:14px;font:500 10px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute-l);pointer-events:none;background:rgba(251,250,248,.88);padding:5px 10px;border-radius:999px}
+.vzoom{position:absolute;right:14px;bottom:12px;z-index:3;display:flex;align-items:center;gap:2px;background:rgba(251,250,248,.92);border-radius:999px;padding:3px;box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+.vzoom button{width:34px;height:34px;border-radius:50%;border:0;background:none;color:var(--ink);font:500 18px var(--f-mono);cursor:pointer;transition:background .3s,color .3s}
+.vzoom button:hover{background:var(--ink);color:var(--paper)}
+.vzoom span{min-width:44px;text-align:center;font:500 11px var(--f-mono);color:var(--mute-l)}
+.vnav{position:absolute;top:50%;z-index:3;margin-top:-20px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(251,250,248,.9);color:var(--ink);font:400 26px/1 var(--f-body);cursor:pointer;box-shadow:0 6px 18px -8px rgba(0,0,0,.4);transition:background .3s,color .3s}
+.vnav:hover{background:var(--ink);color:var(--paper)}
+.vnav.prev{left:12px}.vnav.next{right:12px}
+.vmain[data-n="1"] .vnav{display:none}
+.vside{position:relative;display:flex;flex-direction:column;gap:18px;min-width:0;padding-top:4px}
+.vside h3{margin:0;font-family:var(--f-display);font-weight:500;font-size:clamp(30px,3.6vw,46px);line-height:1.04;padding-right:44px}
+.vprice{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;font:500 24px var(--f-mono)}
+.vprice b{font-weight:500}
+.vprice s{font-size:15px;color:#8a8a86;font-weight:400}
+.vprice em{font-style:normal;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--brand);color:#fff;border-radius:999px;padding:4px 10px}
+.vspec{margin:0;font:400 12px var(--f-mono);letter-spacing:.06em;color:var(--mute-l)}
+.vblk{display:grid;gap:10px}
+.plabel{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.plabel span{color:var(--mute-l)}
+.sws,.szs{display:flex;flex-wrap:wrap;gap:8px;min-height:30px;align-items:center}
+.sw2{width:36px;height:36px}
+.sw2[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:3px}
+.sz{min-width:52px;height:44px;padding:0 12px;border:1px solid rgba(10,10,11,.25);border-radius:10px;background:none;color:var(--ink);cursor:pointer;font:500 12px var(--f-mono);transition:background .3s,color .3s,border-color .3s}
+.sz:hover:not(:disabled){border-color:var(--ink)}
+.sz[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.sz:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.vqty{margin-top:0;width:max-content}
+.vqty button{width:40px;height:40px}
+.vqty span{min-width:30px;font-size:14px}
+.vact{display:flex;gap:10px}
+.vact .btn.solid{flex:1;padding:16px 20px}
+.vwish{gap:8px}
+.vwish[aria-pressed=true]{border-color:var(--brand)}
+.btn.wa{width:100%}
+.vfull{font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--brand);text-decoration:underline;text-underline-offset:4px}
+.vdeliv{list-style:none;margin:0;padding:14px 16px;border:1px solid var(--line);border-radius:14px;display:grid;gap:8px;font-size:14px;color:#3c3c39}
+.vdeliv li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--brand);margin-right:10px;vertical-align:middle}
+.vnote{margin:0;font:400 11px var(--f-mono);letter-spacing:.06em;color:var(--mute-l)}
+.vclose{display:none;position:absolute;right:0;top:0;z-index:4;width:42px;height:42px;border-radius:50%;border:1px solid var(--line-l);background:var(--paper);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;place-items:center;transition:background .3s,color .3s}
+.vclose:hover{background:var(--ink);color:var(--paper)}
+.vdet details{border-top:1px solid var(--line);padding:2px 0}
+.vdet details:last-child{border-bottom:1px solid var(--line)}
+.vdet summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;padding:14px 0;font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.vdet summary::-webkit-details-marker{display:none}
+.vdet summary::after{content:"+";font-size:16px;line-height:1}
+.vdet details[open] summary::after{content:"\2212"}
+.vdet p,.vdet li{margin:0 0 12px;color:#4a4a47;font-size:14.5px}
+.vdet ul{margin:0;padding-left:18px}
+.vdet li b{font-weight:500;color:var(--ink)}
+.vrel{border-top:1px solid var(--line);background:var(--paper-2);padding:clamp(30px,5vw,56px) 0 clamp(40px,6vw,80px)}
+.vrel h4{margin:0 0 20px;font:500 12px var(--f-mono);letter-spacing:.16em;text-transform:uppercase}
+.relgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:16px}
+.mini{text-align:left;background:none;border:0;padding:0;cursor:pointer;color:inherit;display:grid;gap:6px;align-content:start}
+.mimg{display:block;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:radial-gradient(90% 70% at 50% 35%,#f6f4f0,#e1ded7);margin-bottom:4px}
+.mimg img{width:100%;height:100%;transition:transform .8s var(--ease)}
+.mimg.fit img{object-fit:contain;padding:6% 8%;filter:drop-shadow(0 12px 10px rgba(0,0,0,.2))}.mimg.fill img{object-fit:cover}
+.mini:hover .mimg img{transform:scale(1.05)}
+.mini b{font:500 18px/1.15 var(--f-display)}
+/* quick view = a compact card over the page */
+.viewer.quick{background:rgba(5,5,6,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;padding:clamp(0px,2vw,24px);transform:none}
+.viewer.quick .vbar,.viewer.quick .vthumbs,.viewer.quick .vrel,.viewer.quick .vdet,.viewer.quick .vdeliv,.viewer.quick .vzoom,.viewer.quick .vcap,.viewer.quick .vnote{display:none}
+.viewer.quick .vwrap{background:var(--paper);border-radius:24px;max-width:940px;width:100%;padding:0;gap:0;grid-template-columns:minmax(0,1fr) minmax(0,1fr);overflow:hidden;align-items:stretch}
+.viewer.quick .vstage{position:static}
+.viewer.quick .vgal{display:block;height:100%;min-height:380px}
+.viewer.quick .vmain{height:100%;min-height:380px;border-radius:0}
+.viewer.quick .vside{padding:clamp(22px,3vw,38px);gap:14px;justify-content:center}
+.viewer.quick .vclose{display:grid;right:14px;top:14px}
+@media(max-width:860px){
+  .vwrap{grid-template-columns:minmax(0,1fr)}
+  .vstage{position:static}
+  .vgal{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;height:auto}
+  .vmain{aspect-ratio:4/5;max-height:70vh;max-height:70svh;width:100%;justify-self:center}
+  .vthumbs{flex-direction:row;order:2;overflow-x:auto;overflow-y:hidden}
+  .vthumbs button{width:64px}
+  .vcrumb{display:none}.vbar{justify-content:space-between}
+  .viewer.quick{padding:0;align-items:end}
+  .viewer.quick .vwrap{grid-template-columns:minmax(0,1fr);border-radius:22px 22px 0 0;max-height:100svh;overflow-y:auto}
+  .viewer.quick .vgal,.viewer.quick .vmain{min-height:0}
+  .viewer.quick .vmain{aspect-ratio:1/1;max-height:42svh;height:auto}
+  .viewer.quick .vgal{height:auto}
+  .relgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* ===== bag drawer ===== */
+.scrim{position:fixed;inset:0;z-index:95;background:rgba(5,5,6,.55);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.scrim.on{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:96;width:min(440px,100%);background:var(--paper);color:var(--ink);transform:translateX(104%);visibility:hidden;transition:transform .6s var(--ease),visibility .6s;display:flex;flex-direction:column;--mute:var(--mute-l);--line:var(--line-l)}
+.drawer.on{transform:none;visibility:visible;box-shadow:-30px 0 60px -30px rgba(0,0,0,.5)}
+.dhead{display:flex;align-items:center;justify-content:space-between;padding:22px 22px 16px;border-bottom:1px solid var(--line)}
+.dtabs{display:flex;gap:6px}
+.dtabs button{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);border-radius:999px;padding:9px 15px;cursor:pointer;font:500 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;transition:background .3s,color .3s}
+.dtabs button b{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:var(--brand);color:#fff;font-size:11px;font-weight:500;padding:0 5px}
+.dtabs button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.dhead .round:hover{background:var(--ink);color:var(--paper)}
+.dlist{flex:1;overflow-y:auto;padding:6px 22px}
+.dempty{padding:50px 0;text-align:center;color:var(--mute);font:400 13px var(--f-mono);letter-spacing:.06em}
+.crow{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+.cthumb{display:block;width:78px;height:92px;border-radius:12px;overflow:hidden;background:radial-gradient(90% 70% at 50% 35%,#f6f4f0,#e1ded7)}
+.cthumb img{width:100%;height:100%}
+.cthumb.fit img{object-fit:contain;padding:5%}.cthumb.fill img{object-fit:cover}
+.crow b{display:block;font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.1}
+.crow small{display:block;margin-top:4px;font:400 11px var(--f-mono);letter-spacing:.04em;color:var(--mute)}
+.qty{display:inline-flex;align-items:center;gap:2px;margin-top:10px;border:1px solid var(--line);border-radius:999px}
+.qty button{width:30px;height:30px;border:0;background:none;cursor:pointer;font:500 15px var(--f-mono)}
+.qty span{min-width:22px;text-align:center;font:500 12px var(--f-mono)}
+.crow .rm:hover{color:var(--ink)}
+.crow .rm{background:none;border:0;cursor:pointer;color:var(--mute);font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:underline;margin-top:8px;padding:0;display:block}
+.cp{font:500 14px var(--f-mono);white-space:nowrap}
+.dfoot{padding:18px 22px calc(22px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);display:grid;gap:12px;background:var(--paper-2)}
+.dtot{display:flex;justify-content:space-between;align-items:baseline;font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.dtot span{font-family:var(--f-display);font-size:34px;letter-spacing:0;font-weight:500}
+.dfoot p{margin:0;font:400 11px var(--f-mono);letter-spacing:.04em;color:var(--mute)}
+.dfoot .btn{width:100%}
+
+/* ===== contact ===== */
+.vgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,80px);align-items:end}
+@media(max-width:859px){.vgrid{grid-template-columns:minmax(0,1fr)}}
+.dl{display:grid;gap:26px}
+.dl div{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:16px}
+.dl dt{font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.dl dd{margin:0;font-family:var(--f-display);font-size:clamp(24px,3.2vw,34px);line-height:1.15}
+.phone{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.cact{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.flogo{display:block;width:min(260px,60vw);aspect-ratio:3.8444;margin-bottom:clamp(30px,5vw,60px)}
+.flogo svg{display:block;width:100%;height:100%;fill:#d94a43;overflow:visible}
+footer{margin-top:clamp(56px,8vw,110px);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font:400 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--paper);color:var(--ink);padding:11px 18px;border-radius:999px;font:500 12px var(--f-mono);letter-spacing:.08em;transition:opacity .4s,transform .5s var(--ease);z-index:99;pointer-events:none;border:1px solid var(--line-l);max-width:calc(100vw - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv,.js .band.open{transition:none;opacity:1;transform:none;clip-path:none}
+  .marq .track,.hint::after{animation:none}
+  .viewer,.vwrap,.drawer,.card,.cimg img,.qv,.hg,.mimg img{transition:none}
+  .hgi,.hgi.swing,.rackwrap.in .hgi{animation:none!important}
+  .logo-stage.shine .sheen{animation:none;opacity:0}
+  .js .hero .hero-eye,.js .hero .hero-rule,.js .hero .hero-tag,.js .hero .hero-sub,.js .hero .hero-cta{animation:none}
+}
+</style>
+<svg class="lg-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="lg-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="186"><stop offset="0" stop-color="#ab2d29"/><stop offset=".55" stop-color="#982826"/><stop offset="1" stop-color="#7f1e1d"/></linearGradient><linearGradient id="lg-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff6e8" stop-opacity="0"/><stop offset=".5" stop-color="#fff6e8" stop-opacity=".9"/><stop offset="1" stop-color="#fff6e8" stop-opacity="0"/></linearGradient><path id="lg-full" fill-rule="evenodd" d="M48.5 89.21C48.37 89.02 48.23 88.82 48.1 88.62L48.33 87.62L55.28 73.62L55.8 72.25L58.46 67.25L64.23 54.75C68.23 46.09 72.6 37.61 76.7 29C79.02 24.14 81.75 19.44 83.58 14.38L84.12 12.88C85.66 8.61 86.79 3.81 90.01 0.62L90.51 0.12L91.62 -0.06L100 -0.06L101.38 0.22L101.88 0.73L102.9 2.5C108.73 12.57 113.16 23.38 118.44 33.75C121.51 39.78 124.74 45.73 127.82 51.75C130.55 57.1 133.1 62.56 135.91 67.88C136.77 69.52 137.82 71.07 138.6 72.75L141.69 79.38L143.02 81.62L143.19 82.25C143.23 82.38 143.19 82.55 143.09 82.62L142.6 83L141.75 83.15C136.49 84.05 131.07 83.1 125.75 82.69L110.88 81.55L109.75 81.12L108.96 80.12L108.18 78.25C105.43 71.69 101.23 65.8 98.44 59.25L97.37 56.75L89.61 41.25L88.54 38.62L88.02 38L87.5 37.82L87 38.04L86.58 38.62L85.62 41.25L80.79 51L79.91 52.38C76.85 57.16 75.25 62.74 72.84 67.88C70.42 73.03 69.22 79.03 65.4 83.25C65.03 83.66 64.5 83.89 64 84.11C61.62 85.14 58.91 85.23 56.5 86.18L51.62 88.09L49.62 89.19C49.3 89.37 48.87 89.2 48.5 89.21ZM183.25 148.28C161.25 149.69 135.56 159.9 117.12 147.81L116.38 147.32L116.06 146.38L116.04 142.75L116.28 141.88L116.75 141.25C117.02 140.89 117.55 140.74 118 140.72L123.12 140.59L127.38 140.18L128.48 139.88L129.38 139.43L131.38 137.86L131.85 137.12L132.53 135.25L132.57 132.88L131.75 130.1C129.7 123.17 127.5 115.72 122.5 110.51L121.77 109.75L120.88 109.39L118.75 109.16C114.31 108.69 110.04 107.14 105.62 106.41L92.25 104.21C88.67 103.62 85 103.64 81.38 103.69L72.75 103.79L67.62 104.14C65.31 104.3 63.03 104.77 60.75 105.22C57.67 105.82 54.62 106.55 51.59 107.38C48.61 108.19 45.6 108.97 42.75 110.15L36.5 112.75L31.88 115.23L25.25 119.27L19.75 123.22L18.25 124.68L16.25 126.23L15.5 126.51C15.34 126.38 15.18 126.25 15.02 126.12L15.21 125.25L16.38 123.26L21.06 117.38L24.32 113.75L29.25 108.83L35.75 103.33L38.75 101.14L45.38 97.02C46.97 96.02 48.69 95.22 50.42 94.5L58.57 91.12L64.62 89.11L69.75 87.95L76.5 86.73C79.67 86.16 82.9 85.79 86.12 85.79L97.12 85.8L105.62 86.13L111.25 86.72C115.44 87.15 119.57 88.02 123.75 88.52C127.99 89.04 132.23 89.73 136.5 89.78L145.75 89.88L151.12 89.64C155.18 89.45 159.15 88.47 163.12 87.65C165.77 87.11 168.43 86.55 171 85.72L176.62 83.9L178 83.2L179.88 82.57C183.24 81.44 186.16 79.25 189.12 77.31L191.69 75.62L197.51 70.88C198.9 69.73 200.16 68.41 201.29 67L203.81 63.88L205.27 61.62L205.88 61.12L206.5 60.95L206.98 61.12C207.12 61.18 207.15 61.38 207.23 61.5C207.17 61.96 207.23 62.45 207.06 62.88L204.6 69.12L201.17 76.25L198.31 81.25L196.05 84.62L193 88.54L191.25 90.35C189.39 92.27 187.36 94.03 185.25 95.67C183.3 97.18 181.34 98.72 179.12 99.81L173.12 102.74L167.62 104.83L163.12 106.28L160.12 107.01L158.25 107.19L157.73 107.62L157.54 108.38L157.94 109.75L159.5 112.75C160.94 115.5 161.86 118.5 163.29 121.25L166.35 127.12C166.92 128.22 167.55 129.3 168.34 130.25C169.3 131.39 170.29 132.62 171.62 133.28L174.62 134.74C175.94 135.38 177.42 135.74 178.88 135.79L183.75 135.98L187.75 135.75L192.88 134.65L197.62 132.78C198.98 132.24 200.31 131.62 201.5 130.78L205.88 127.68L208.9 124.88L210.81 122.75L214.5 117.92L216.82 114.12L219.56 108.38L222.13 101.12C222.73 99.46 223.25 97.75 223.53 96L224.54 89.75L225.14 84L225.2 76.25L224.84 70.62L224.46 67.75L223.15 61.38L221.22 55.5C220.39 53 219.42 50.52 218.1 48.25L215.26 43.38C214.28 41.69 213.17 40.07 211.86 38.62L207.8 34.12L205.76 32.38L201.38 29.31L199.38 28.07L196.38 26.67L191.25 24.71L188.38 23.9C186.06 23.25 183.65 22.86 181.25 22.77L176.12 22.59L168.75 22.72L162.88 23.41L160.5 23.94L159.15 24.62L158.05 25.62L156.72 27.75L156.21 28.88L155.93 30.5C153.31 46.16 162.61 63.74 155.9 78.12L155.5 78.98L154.88 79.34L150.75 79.4L150.08 79L149.33 78C147.7 75.82 146.9 73.13 145.62 70.72C144.1 67.83 142.4 65.04 140.93 62.12L134.75 49.81L130.3 42.12L130.05 40.62L130.16 27.62L129.96 26.5L129.09 24.5L128.38 23.6L126.97 22.5L124.25 21.71L120.75 21.11L120 20.65L119.52 20L119.26 18.88C118.94 17.54 118.8 16 119.38 14.75L119.75 13.94L120.62 13.46L191.25 13.56L199.25 14.26L204.12 15L210.38 16.46L216.12 18.3L223.38 21.34L227.83 23.75L231.38 26.04L234.38 28.31C235.94 29.48 237.42 30.77 238.83 32.12L242.09 35.25L246.37 40.5L248.62 43.87C250.32 46.41 251.51 49.26 252.75 52.06C253.52 53.79 254.23 55.56 254.8 57.38L255.88 60.84L257.17 66.38L258.14 74.62L258.18 83L257.76 87.5L257 92.88C256.78 94.4 256.34 95.89 255.95 97.38C255.63 98.58 255.29 99.79 254.88 100.96C254.23 102.8 253.49 104.6 252.69 106.38C251.48 109.09 250.37 111.89 248.74 114.38L245.72 119L242.89 122.62L240.25 125.62L237.5 128.36C235.61 130.24 233.75 132.22 231.5 133.65L227 136.5C224.84 137.86 222.53 138.99 220.25 140.14C219.02 140.76 217.77 141.35 216.5 141.89C215.43 142.34 214.35 142.78 213.25 143.14L207.86 144.88L199.38 146.84L193.38 147.63L183.25 148.28ZM399.88 184.42C398.6 184.63 397.26 184.54 396 184.28L394.12 183.88L392.5 183.28L391 182.38L390.13 181.5L389.65 180.38L389.54 178.75L388.22 177.12L387.74 176.12C387.24 175.1 387.22 173.89 387.24 172.75C387.27 171.14 387.49 169.49 388.1 168L389.06 165.62L390.12 163.75L393.12 159.5L399.15 153.25L405.12 148.1L409.53 145L418.62 139.58C420.95 138.19 423.31 136.48 426 136.15L426.88 136.04L427.52 136.25L427.88 136.62L427.97 137.25C427.73 137.62 427.62 138.12 427.25 138.38L421.62 142.36C419.56 143.82 417.59 145.43 415.75 147.16L406.23 156.12L401.53 161.38L398.36 165.38L397.09 167.62L396.2 170.25C395.98 170.88 395.79 171.68 396.14 172.25L396.5 172.85L397 173.22C397.3 173.44 397.8 173.47 398.12 173.29L400.75 171.85L403.5 169.89C406.75 167.57 409 164.09 411.67 161.12C414.25 158.25 416.41 154.98 419.26 152.38L420.5 151.25C425.15 147.01 427.73 140.87 432.25 136.5L433.41 135.38C436.36 132.53 438.22 128.74 440.88 125.62L446.83 118.62C448.16 117.06 449.84 115.82 451.12 114.22L452.31 112.75L452.56 112C452.52 111.92 452.48 111.83 452.43 111.75C452.33 111.73 452.22 111.64 452.12 111.68L451 112.14L446.5 115.81C444.35 117.56 442.05 119.13 439.75 120.69C438.85 121.3 437.95 121.91 437 122.44L433.25 124.56L430.88 125.25C430.27 125.43 429.62 125.38 429 125.3C428.35 125.21 427.62 125.17 427.12 124.74L425.25 123.14L424.05 120.88L423.86 119.25L424.05 115.75L426.78 110.5L426.93 109.88C426.83 109.8 426.73 109.73 426.62 109.66L424.88 110.82C423.19 111.92 422.05 113.7 420.51 115C418.96 116.3 417.31 117.48 415.62 118.61L409.38 122.81L403.25 126.69L401.25 127.69L397 129.32C395.72 129.81 394.37 130.23 393 130.24L391.12 130.25L389.5 130.01C388.41 129.86 387.28 129.56 386.38 128.94L384.3 127.5L382.77 125.88L381.73 124.12L380.98 122.25L380.6 120.38L380.54 118.88L381.08 115.25L381.84 112.62C382.36 110.82 383.23 109.12 384.12 107.46C385.81 104.34 387.64 101.26 389.87 98.5L396.04 90.88L401.25 84.83C404.06 81.57 407.79 79.06 410.12 75.44L410.49 74.88L410.56 74.38L410.25 73.96L409.62 73.81L406.62 74.1C404.84 74.27 403.04 73.95 401.25 74.07L398.25 74.28C396.14 74.43 394.11 75.45 392 75.37L388.88 75.26C386.7 75.18 384.59 74.46 382.5 73.85L377 72.25L374 71.69C373.59 71.62 373.31 71.23 372.96 71C372.9 70.67 372.83 70.33 372.77 70L373.27 69.25L374.62 68.46C376.47 67.39 378.84 67.59 380.8 66.75C381.25 66.56 381.64 66.25 382.06 66C382 65.83 381.93 65.67 381.87 65.5L381 65.3C379.41 64.92 377.75 65.9 376.12 65.72L375.12 65.61L374.58 65.25L374.41 64.62L374.62 63.99L375.19 63.5L376.38 63.11L385.75 61.68L391.25 60.54L395 59.51L397.75 58.52L403.25 55.59L404.38 54.68L404.79 54.12L404.88 53.38L404.62 52.82L404.05 52.38L400.29 51.25L396 50.45L388.12 50.04L384.62 50.09L376.38 50.58L368.75 51.62L358.62 53.79L351.62 55.8L346.75 57.53L341.75 59.63C339.33 60.65 336.92 61.78 334.75 63.25L330.34 66.25L326.62 69.21L324.38 71.48L322.73 73.5L322.12 74.57L321.93 75.38L322.06 76.25L322.48 77L323.25 77.67L324.5 78.35L327.25 79.31L331.75 80.06L343.38 80.4L360.25 81.69L365.75 83L369.62 84.33C370.87 84.75 372.11 85.29 373.12 86.12L375.38 87.96L377.23 90.62L377.83 92.62L378.01 94C378.24 95.69 378.28 97.48 377.82 99.12L377.26 101.12L376.18 103.38L374.08 106.38L370.9 109.75L367.21 112.62L361 116.59C356.86 119.24 352.18 120.96 347.62 122.82C344.27 124.2 340.88 125.54 337.38 126.48L327.25 129.2L319.5 130.8L311.38 131.77L308 131.93L299.88 131.87L292.12 130.81L287.75 129.61L283.62 127.98L281.12 126.29L279.88 124.98L278.85 123.38L278.26 121.88L278.08 120.5L278.31 119.5L279.18 117.62L280.5 116.39L281.88 115.5C283.15 114.67 284.63 114.1 286.12 113.82L292.38 112.66L295.5 112.52L299.75 111.94L303 111.95C303.36 111.95 303.61 112.32 303.91 112.5C303.93 112.75 303.96 113 303.98 113.25L303.12 113.88L298.5 115.26C296.47 115.86 294.5 116.65 292.5 117.35L292.27 117.88L292.5 118.46C293 118.61 293.48 118.83 294 118.9C297.55 119.4 301.19 119.13 304.75 118.75L313.38 117.83L316.62 117.11L320 116.67C323.1 116.27 326.11 115.31 329.12 114.49C331.48 113.85 333.83 113.2 336.12 112.36L345.12 109.06L352.5 105.96L357.3 103.5L362.25 100.46L365 98.41L367.31 96.12L367.83 95.25L367.97 94.25L367.75 93.43C367.55 92.68 366.81 92.13 366.12 91.76L365.25 91.29C364 90.62 362.53 90.42 361.12 90.22L355.12 89.37L352.62 89.2L344.75 89.4L337 90.05L332.62 90.07L326.25 89.15L322.75 88.31L318.5 86.95C317.11 86.5 315.89 85.61 314.7 84.75C313.84 84.13 312.9 83.51 312.32 82.62L310.83 80.38L310.31 79.25C309.86 78.27 309.49 77.2 309.52 76.12L309.6 72.88L309.95 70.75C310.24 69.01 310.99 67.31 312.03 65.88L314.47 62.5L319.5 57.29L326.5 52.4L331.88 49.29L333.38 48.69L334.57 47.88L338.58 45.88L342.75 44.02L351.5 40.79L358.38 38.76C361.4 37.87 364.51 37.28 367.62 36.81L374 35.84L379.62 35.47C382.49 35.29 385.4 35.21 388.25 35.6L396.12 36.67L399.42 37.38L403.25 38.64L407.5 40.82L409.4 42L412.5 44.75L413.79 46.62L415.26 49.75L415.61 51.75L415.56 53L415.01 54.88L413.89 57.12L412.78 58.5C412.18 59.25 410.81 59.54 410.68 60.5L410.59 61.25L410.98 61.62C414.99 61.48 419.01 60.83 423 61.18L424.38 61.3L425.25 61.1L426.52 60.12C430.39 57.14 432.64 52.42 436.38 49.26C437.09 48.65 437.85 48.01 438.75 47.74L440.75 47.12L442.88 46.95L445.12 47.46L446.75 48.16L448.08 49.5L448.37 50.38L448.37 51.12L447.83 52.38C446.89 54.54 444.73 55.95 443 57.56L440.52 59.88L440.18 60.75C440.29 60.94 440.39 61.14 440.5 61.33L442.88 61.54L447.38 61.45L457.62 62.19L465.25 63.34L469.12 64.49L471.25 65.46L472.61 66.5L473.26 67.25L473.78 68.5L473.75 69.5L472.98 70.62C472.75 70.96 472.28 71.18 471.88 71.16L463.88 70.71L456 70.91L449.62 71.38L443.75 71.56L431.38 72.92L427.88 72.93L426.75 73.32L421.38 78.72C417.49 82.63 413.93 86.85 410.3 91C407.25 94.5 404.09 97.92 401.29 101.62L397.53 106.62L394 112L392.48 115.62L392.19 117.12L392.25 118.05L392.72 118.88L393.5 119.33L394.38 119.38L397.5 118.79C399.47 118.42 401.38 117.68 403.12 116.7L408.82 113.5L414.25 110.09C417.59 107.99 420.91 105.84 424.12 103.55L429.98 99.38L439.12 92.36L448.23 84.25C448.91 83.64 449.74 83.16 450.62 82.93L452 82.58L454 82.49C454.95 82.45 455.96 82.67 456.75 83.2L458 84.04L458.72 84.88L459.1 86L458.94 87.12L457.38 89.19L450.27 96L442 105.12L438.08 110L437.68 111.38L437.73 111.88C437.75 112.01 437.91 112.08 438 112.18L438.75 112.2L439.88 111.74C442.76 110.55 445.47 108.94 448.12 107.3L454.12 103.61L458.25 100.75C460.67 99.08 463.02 97.29 465.12 95.24L471.38 89.12L475.42 84.88L477.75 83.42L478.62 83.07L482 82.79L483.34 83L484.28 83.38L485.5 84.26L486.38 85.11L487.06 86.12L487.24 86.75L487.16 87.38L485.98 89.12L480.49 94.5L472.19 103.62L448.22 134.12C443.57 140.04 439.31 146.27 434.58 152.12C432.41 154.82 430.12 157.42 427.81 160C425.12 163.01 422.61 166.2 419.59 168.88L413 174.71L409.21 177.5L407.5 178.5C407.38 178.57 407.3 178.73 407.3 178.88L407.35 180.38L406.88 181.49L406 182.38L404.38 183.33L402.5 183.98L399.88 184.42ZM588.62 132.45L585.54 131.62L582.62 129.74L580.56 127.5L579.24 125.38L578.06 122.25L577.86 119.25C577.81 118.54 577.75 117.71 578.16 117.12L579.21 115.62L580.75 114.08L581.5 113.79L582.38 113.93L583.38 114.62L585.88 118.01L587.5 119.8L589.57 121.62L590.88 122.01L591.88 121.9L593.12 121.44L596.46 119.75L598.12 118.61L599.81 116.88L601.55 114.62C602.82 112.97 603.87 111.1 604.57 109.12L606.66 103.25L607.23 100.62L607.79 99.25C608.61 97.21 609.15 94.95 608.97 92.75L608.9 91.88L608.5 91.38L608 91.38L607.25 91.81L605.25 93.64C602.96 95.75 600.63 97.87 598 99.53L596.75 100.32L592.62 103.77C589.88 106.06 586.95 108.14 584 110.17C582.05 111.52 579.9 112.56 578.02 114L575.5 115.93L564.88 122.95L560 125.67L555.38 127.88L549.38 130.33L545.12 131.48C543.83 131.83 542.47 131.98 541.12 132L536.88 132.06L534.75 131.77C533.42 131.59 532.03 131.21 530.97 130.38L528.27 128.25C527.45 127.6 526.82 126.69 526.33 125.75C525.68 124.51 525.29 123.13 525.09 121.75C524.9 120.51 524.76 119.2 525.09 118L525.99 114.75L526.77 113L526.74 112.5C526.62 112.42 526.5 112.34 526.38 112.26C526 112.43 525.59 112.53 525.25 112.77C524.52 113.28 524.08 114.14 523.38 114.69L521.38 116.27C517.55 119.28 513.63 122.19 509.48 124.75C507.52 125.96 505.51 127.11 503.38 127.98L498.77 129.88L495.38 130.75L493.38 130.94L489.62 130.75L488.25 130.4L485.38 128.95L483.05 127.12L481.5 125.3L480.19 122.38L479.7 120.5L479.56 116.62C479.5 114.9 479.95 113.18 480.38 111.5L481.13 108.5L483.49 103.5L486.02 98.88L492.25 89.52L497.6 82.88L502.29 77.62L509.88 70.05C511.23 68.69 512.7 67.46 514.18 66.25L520.17 61.38C522.54 59.45 524.94 57.57 527.5 55.91L534.62 51.28C537.12 49.66 539.82 48.38 542.5 47.11C544.46 46.18 546.39 45.07 548.5 44.57L552.5 43.64L555.62 43.39L558.38 43.76C559.13 43.86 559.79 44.38 560.38 44.88C560.94 45.36 561.48 45.94 561.75 46.64L562.63 48.88C562.91 49.57 562.83 50.41 562.59 51.12L561.56 54.25L559.78 57C558.49 59 556.72 60.66 555 62.31L549.97 67.12L540.25 75.53L533.84 80.62C530.37 83.39 526.74 85.94 523.12 88.52C520.78 90.19 518.44 91.89 516 93.42L506.25 99.53C503.41 101.31 499.09 101.37 497.38 104.25L493.43 110.88L492.04 114.38L491.84 115.75L491.92 117.5L492.47 119L493.12 119.82L494 120.21L495.25 120.37L499.12 119.7L504.38 117.8L509.12 115.62C511.98 114.32 514.6 112.54 517.26 110.88C521.93 107.95 526.64 105.04 531 101.66C533.69 99.57 535.97 97 538.62 94.86L542.62 91.64L546.34 89.12L552.5 85.64L556 84.11L560 82.99L562.62 82.49L566.75 82.3C568.22 82.23 569.73 82.34 571.12 82.79L572.62 83.27C573.62 83.58 574.63 84.15 575.23 85L576.54 86.88C576.94 87.44 577.13 88.19 577.08 88.88L576.85 92.12L575.59 94.88L573.54 97.62L569.25 101.61L563 105.7L556.38 109.19L551.38 110.77C550.09 111.17 548.72 111.56 547.38 111.42L544.5 111.13L542.12 109.59L541.5 109.58L541 109.85L540.35 110.62L538.28 115.5L537.62 117.88L537.5 119.5L537.67 120.5L538.25 121.42L539.38 122.29C539.92 122.72 540.68 122.88 541.38 122.89L544 122.94C545.88 122.98 547.79 122.58 549.53 121.88L559.64 117.75L567.75 113.52L571.25 111.41L577.12 107.37L587.88 99.48L589.15 98.25L594.25 94.38C598.27 91.33 602.18 88.13 605.88 84.7L610 80.88L611.5 79.84L613 79.24C613.82 78.92 614.75 78.95 615.62 79.04L618 79.3L619.62 79.76C620.65 80.04 621.75 80.51 622.38 81.37L623.48 82.88L623.77 83.75L623.45 86.12L622.57 88.75L619.53 101.12L618.47 104.75L616.97 109L614.33 113.75L614.21 114.38C614.31 114.5 614.4 114.62 614.5 114.75L615.25 114.61L617.22 113.5L626.38 107.67L636.25 100.52L639.01 98.25C640.69 96.88 642.18 95.04 644.25 94.41L645 94.19L645.62 94.35L646.12 94.82L646.39 95.5L646.22 96.5L645.38 97.64L630.38 110.02L623.25 115.58C621.87 116.66 620.45 117.68 618.99 118.62L611 123.79C608.5 125.41 605.94 126.96 603.25 128.25L600 129.82L595.62 131.52L591.25 132.62C590.4 132.83 589.47 132.67 588.62 132.45ZM507.12 92.2L514.25 86.78L519.12 83.41L524.88 78.82C527.44 76.77 529.89 74.59 532.31 72.38L542.12 63.39C544.81 60.93 547.64 58.38 549.25 55.12L549.74 54.12L549.62 53.48L549.12 53.2L548.38 53.35L542.38 57.36L536.62 61.7L528.39 68.5L521.38 75L515.31 81.12L513.75 82.99L506.22 90.88L505.72 91.75L505.66 92.5C505.81 92.54 505.98 92.7 506.12 92.63L507.12 92.2ZM549.38 104.97L554.12 102.37L558.26 99.75C560 98.65 561.59 97.3 563 95.81L566.35 92.25L567.48 90.62L567.56 90L567.38 89.48L566.88 89.05L566.25 88.89L564.75 89.25L561.13 91.25L555.75 94.84L550.89 98.75C549.3 100.03 547.63 101.31 546.5 103L546.08 103.62L546.16 104.38L546.75 104.87L547.62 105.16C548.18 105.34 548.86 105.25 549.38 104.97ZM62 147.05C43.98 150.18 25.36 148.28 7.12 146.86L5.75 146.75L5.17 146.5L4.74 145.88L4.57 145L4.75 144.25L5.22 143.62L7.62 141.59L10.75 138.32C12.14 136.86 13.67 135.54 15.22 134.25L22.32 128.38L28 124.13L32.62 121.23L34.62 120.21L36.12 119.71C37.19 119.35 38.08 118.61 39.09 118.12C41.55 116.93 44.06 115.82 46.62 114.86C48.67 114.09 50.75 112.36 52.88 112.88L53.38 113L53.78 113.38C53.79 113.71 53.99 114.09 53.81 114.38L52.11 117L48.63 123.75C47.9 125.16 47.42 126.7 47.05 128.25C46.82 129.19 46.58 130.16 46.66 131.12L46.86 133.25L47.33 135.12C47.52 135.87 48.15 136.47 48.75 136.95L50.5 138.36L53.88 139.63L55.75 140.01L61.88 140.32L62.84 140.62L63.4 141.12L63.69 141.75L63.88 145.12L63.78 146L63.5 146.52L62.88 146.9L62 147.05Z"/><clipPath id="lg-clip"><use href="#lg-full"/></clipPath></defs></svg>
+<div class="prog" id="prog"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="#hero" data-go="hero" aria-label="AD STYLES, back to top"><svg viewBox="0 0 692 180" aria-hidden="true" focusable="false"><use href="#lg-full"/></svg></a>
+  <ul id="navlinks">
+    <li><a href="#hero" data-go="hero">Home</a></li>
+    <li><a href="#sec-shirts" data-go="sec-shirts">Shirts</a></li>
+    <li><a href="#sec-tshirts" data-go="sec-tshirts">T-Shirts</a></li>
+    <li><a href="#sec-pants" data-go="sec-pants">Trousers</a></li>
+    <li><a href="#sec-jeans" data-go="sec-jeans">Jeans</a></li>
+    <li><a href="#sec-shoes" data-go="sec-shoes">Shoes</a></li>
+    <li><a href="#contact" data-go="contact">Contact</a></li>
+  </ul>
+  <div class="navr">
+    <button class="heartbtn" type="button" id="wish-open" aria-label="Saved items"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 20.6 4.6 13.4a4.9 4.9 0 0 1 0-7 5 5 0 0 1 7 0l.4.4.4-.4a5 5 0 0 1 7 0 4.9 4.9 0 0 1 0 7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><b id="wish-n">0</b></button>
+    <button class="bagbtn" type="button" id="bag-open" aria-label="Open bag">Bag <b id="bag-n">0</b></button>
+    <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" id="hero" aria-label="AD STYLES">
+  <div class="hero-stick">
+    <div class="hero-lights" aria-hidden="true"><i class="hl-veil"></i></div>
+    <div class="hero-frame" aria-hidden="true"></div>
+    <div class="hero-body" id="hero-body">
+      <p class="eyebrow hero-eye"><span>Tennur</span><i></i><span>Trichy</span><i></i><span>Tamil Nadu</span></p>
+      <div class="logo-stage" id="logo-stage" role="img" aria-label="AD Styles logo">
+        <div class="logo-glow" aria-hidden="true"><svg viewBox="0 0 692 180" focusable="false"><use href="#lg-full"/></svg></div>
+        <div class="lg-pieces" id="lg-pieces" aria-hidden="true"><svg class="lp" data-n="A" viewBox="45.10 -3.06 101.12 95.42" style="left:6.517%;top:-1.700%;width:14.613%;height:53.011%" focusable="false"><path fill-rule="evenodd" d="M48.5 89.2L48.1 88.62L48.33 87.62L55.28 73.62L55.8 72.25L58.46 67.25L64.23 54.75C68.23 46.09 72.6 37.61 76.71 29C79.03 24.14 81.75 19.44 83.58 14.38L84.12 12.88C85.67 8.61 86.63 3.64 90.02 0.62L90.62 0.08L91.62 -0.06L100.12 -0.06L101.38 0.23L101.88 0.75L102.89 2.5C108.75 12.56 113.16 23.38 118.44 33.75C121.51 39.78 124.73 45.73 127.81 51.75C130.55 57.1 133.1 62.55 135.9 67.88C136.77 69.52 137.82 71.07 138.6 72.75L141.68 79.38L143.02 81.62L143.19 82.25C143.22 82.38 143.17 82.55 143.07 82.62L142.58 83L141.75 83.14C136.45 84.07 130.99 83.1 125.62 82.69L110.88 81.55L109.75 81.11L108.9 80L108.18 78.25C105.45 71.63 101.18 65.72 98.38 59.12L97.38 56.75L89.61 41.25L88.55 38.62L88.03 38L87.5 37.82L87 38.04L86.57 38.62L85.61 41.25L80.78 51L79.9 52.38C76.85 57.16 75.25 62.74 72.83 67.88C70.41 73.03 69.21 79.03 65.39 83.25C65.02 83.65 64.5 83.89 64 84.1C61.62 85.14 58.91 85.23 56.5 86.18L51.62 88.09L49.62 89.18C49.3 89.36 48.87 89.19 48.5 89.2Z"/></svg><svg class="lp" data-n="D" viewBox="12.04 10.46 249.14 153.12" style="left:1.740%;top:5.811%;width:36.003%;height:85.067%" focusable="false"><path fill-rule="evenodd" d="M183.25 148.28C161.25 149.69 135.09 160.58 117.12 147.81L116.34 147.25L116.07 146.38L116.05 142.75L116.29 141.88L116.77 141.25C117.04 140.9 117.55 140.74 118 140.73L123.12 140.59L127.38 140.18L128.5 139.87L129.38 139.43L131.38 137.87L131.86 137.12L132.53 135.25L132.57 132.88L131.75 130.09C129.7 123.17 127.5 115.71 122.5 110.5L121.78 109.75L120.88 109.39L118.75 109.16C114.31 108.69 110.04 107.14 105.62 106.41L92.25 104.21L81.38 103.69L72.75 103.79L67.62 104.14C65.31 104.29 63.03 104.77 60.75 105.22C57.64 105.83 54.55 106.56 51.5 107.4C48.55 108.21 45.57 108.98 42.75 110.15L36.5 112.75L31.88 115.23L25.25 119.27L19.75 123.21C18.5 124.11 17.69 125.69 16.25 126.22L15.5 126.5C15.35 126.37 15.19 126.25 15.04 126.12L15.16 125.38L16.38 123.27L20.97 117.5L24.33 113.75L29.36 108.75L35.7 103.38L38.75 101.14L45.38 97.02C46.97 96.02 48.69 95.22 50.43 94.5L58.57 91.12L64.62 89.11L69.75 87.95L76.5 86.73C79.67 86.16 82.9 85.79 86.12 85.8L97.12 85.8L105.62 86.13L111.25 86.72C115.44 87.15 119.57 88.02 123.75 88.53C127.99 89.04 132.23 89.73 136.5 89.78L145.75 89.89L151.12 89.64C155.18 89.45 159.15 88.47 163.12 87.65C165.77 87.11 168.43 86.55 171 85.72L176.62 83.9L178 83.2L179.88 82.57C183.24 81.44 186.16 79.26 189.12 77.31L191.75 75.59L197.52 70.88C198.92 69.73 200.17 68.41 201.3 67L203.81 63.88L205.25 61.67L205.88 61.13L206.5 60.95L207 61.18C207.15 61.25 207.22 61.44 207.25 61.6C207.33 62.02 207.22 62.48 207.06 62.88L204.6 69.12L201.16 76.25L198.31 81.25L196.04 84.62L193.02 88.5L191.25 90.33C189.4 92.24 187.46 94.08 185.3 95.62L181.12 98.59L179 99.87L173.12 102.73L167.5 104.87L163.12 106.28L160.12 107.01L158.25 107.19L157.73 107.62L157.54 108.38L157.94 109.75L159.5 112.75C160.94 115.5 161.86 118.5 163.29 121.25L166.35 127.12C166.92 128.22 167.49 129.35 168.34 130.25L169.5 131.5L171.62 133.28L174.62 134.74C175.94 135.38 177.42 135.74 178.88 135.79L183.75 135.98L187.75 135.75L192.88 134.66L197.62 132.78C198.98 132.24 200.31 131.62 201.5 130.79L205.88 127.69L208.8 125L210.82 122.75L214.46 118L216.83 114.12L219.36 108.88L222.14 101.12C222.73 99.46 223.25 97.75 223.53 96L224.54 89.75L225.14 84L225.21 76.25L224.83 70.5L224.47 67.75L223.15 61.38L221.22 55.5C220.4 53 219.43 50.52 218.1 48.25L215.27 43.38C214.29 41.69 213.17 40.07 211.87 38.62L207.88 34.18L205.77 32.38L201.38 29.3L199.38 28.07L196.38 26.67L191.25 24.71L188.38 23.9C186.06 23.25 183.65 22.86 181.25 22.77L176.25 22.59L168.75 22.72L162.88 23.41L160.5 23.93L159.12 24.64L158.04 25.62L156.71 27.75L156.21 28.88L155.93 30.5C153.31 46.16 162.32 63.61 155.9 78.12L155.56 78.88L154.88 79.34L150.75 79.39L150.1 79L149.34 78C145.69 73.19 143.58 67.39 140.88 62L134.72 49.75L130.3 42.12L130.05 40.62L130.16 27.62L129.96 26.5L129.09 24.5L128.38 23.59L127 22.51L124.25 21.71L120.75 21.1L120 20.64L119.5 19.94L119.26 18.88C118.95 17.53 118.79 15.99 119.38 14.75L119.75 13.96L120.62 13.46L191.25 13.56L199.25 14.27L204.12 15L210.38 16.47L216.12 18.3L223.25 21.28L227.82 23.75L231.3 26L234.44 28.38C235.95 29.51 237.38 30.76 238.75 32.07L242.12 35.31L246.36 40.5L248.62 43.88C250.32 46.42 251.51 49.27 252.75 52.06C253.52 53.8 254.23 55.56 254.79 57.38L255.88 60.85L257.16 66.38L258.14 74.62L258.18 83L257.75 87.5L257 92.85C256.78 94.38 256.34 95.88 255.94 97.38C255.62 98.58 255.29 99.78 254.88 100.96C254.23 102.8 253.48 104.6 252.69 106.38C251.47 109.09 250.37 111.89 248.74 114.38L245.71 119L242.99 122.5L240.25 125.61L237.6 128.25C235.68 130.17 233.79 132.18 231.5 133.64L227 136.49C224.84 137.86 222.54 138.99 220.25 140.14C218.98 140.77 217.69 141.38 216.38 141.94C215.35 142.37 214.31 142.79 213.25 143.13L207.85 144.88L199.38 146.84L193.38 147.63L183.25 148.28Z"/></svg><svg class="lp" data-n="foot" viewBox="1.58 109.33 65.30 47.02" style="left:0.228%;top:60.739%;width:9.436%;height:26.122%" focusable="false"><path fill-rule="evenodd" d="M62 147.05C43.57 150.29 23.39 153.35 5.88 146.77L5.25 146.54L4.75 145.89L4.58 145L4.76 144.25L5.23 143.62L7.73 141.5L10.75 138.33C12.15 136.87 13.69 135.53 15.25 134.24L22.33 128.38L28 124.14L32.75 121.17L34.75 120.16L36.12 119.71C37.19 119.36 38.09 118.61 39.1 118.12C41.56 116.94 44.06 115.82 46.62 114.86C48.67 114.1 50.76 112.33 52.88 112.88L53.38 113.01L53.76 113.38C53.78 113.71 53.98 114.09 53.8 114.38L52.11 117L48.63 123.75C47.9 125.16 47.42 126.7 47.05 128.25C46.82 129.19 46.57 130.16 46.66 131.12L46.86 133.25L47.33 135.12C47.52 135.88 48.14 136.48 48.75 136.97L50.5 138.36L54 139.67L55.75 140.01L61.88 140.33L62.82 140.62L63.39 141.12L63.69 141.75L63.88 145.12L63.77 146L63.5 146.51L62.88 146.9L62 147.05Z"/></svg><svg class="lp" data-n="S" viewBox="275.08 32.47 143.53 102.46" style="left:39.751%;top:18.039%;width:20.741%;height:56.922%" focusable="false"><path fill-rule="evenodd" d="M308 131.93L299.88 131.87L292.25 130.83L287.75 129.6L283.75 128.04L281.37 126.5C280.44 125.9 279.64 125.01 279.19 124L278.34 122.12L278.08 120.75L278.25 119.67L279.11 117.75L280.38 116.5L281.75 115.57C283.02 114.72 284.5 114.14 286 113.86L292.38 112.66L295.5 112.52L299.75 111.94L303 111.95C303.35 111.95 303.59 112.32 303.89 112.5C303.92 112.75 303.94 113 303.97 113.25L303.12 113.88L298.5 115.25C296.47 115.86 294.5 116.65 292.5 117.35L292.27 117.88L292.5 118.46C293 118.61 293.48 118.83 294 118.91C297.55 119.4 301.19 119.13 304.75 118.75L313.38 117.83L316.62 117.11L320 116.67C323.1 116.27 326.11 115.31 329.12 114.49C331.48 113.85 333.83 113.2 336.12 112.36L345.12 109.06L352.5 105.96L357.38 103.46L362.25 100.47L365.12 98.31C366.03 97.63 366.98 96.88 367.49 95.88L367.88 95.12L367.98 94.38L367.84 93.62L367.5 93.05C367.1 92.39 366.48 91.78 365.75 91.53L363.25 90.68L360.75 90.16C358.2 89.64 355.6 89.15 353 89.21L344.75 89.39C341.58 89.47 338.42 90.16 335.25 90.1L332 90.03L328.5 89.51L323.62 88.55L318.5 86.95C317.04 86.49 315.77 85.54 314.53 84.62C313.7 84.01 312.9 83.33 312.25 82.53C311.48 81.59 310.72 80.58 310.38 79.42L309.64 77L309.48 75.25L309.61 72.75L310.01 70.5L312 65.94C312.59 64.59 313.57 63.43 314.59 62.38L319.42 57.38L326.55 52.38L328.75 51.05C331.93 49.13 335.23 47.37 338.62 45.86L342.75 44.02L351.5 40.79L358.25 38.79L366.75 36.96L373.88 35.86L378.75 35.5L385.75 35.47L388.75 35.64L396.12 36.67L399.62 37.44L403.5 38.74C405.57 39.44 407.59 40.48 409.25 41.9L412.25 44.48L413.86 46.75L415.26 49.75L415.61 51.75L415.53 53.12L414.95 55L413.89 57.12L412.64 58.62L411.12 59.86L410.5 59.71L408.75 58.27L406.62 57.76L404.58 55.88C404.34 55.66 404.3 55.29 404.16 55L404.79 54.12L404.9 53.5C404.96 53.15 404.55 52.88 404.38 52.57C402.92 52.11 401.51 51.45 400 51.19L395.62 50.41L386.62 50.03C383.21 49.88 379.77 50.11 376.38 50.58L368.75 51.62L358.75 53.76L353.62 55.2L347.62 57.2L342.38 59.33L338 61.47C336.05 62.42 334.09 63.44 332.38 64.76L326.5 69.31L323.07 73C322.56 73.56 322 74.24 321.98 75L321.96 75.88L322.3 76.75L322.84 77.38L323.75 77.97C324.76 78.64 325.94 79.08 327.12 79.28L331.75 80.06L343.38 80.41L360.38 81.71L365.75 83L370.03 84.5L373.25 86.21L375.5 88.12L377.25 90.69L377.82 92.62L378.01 94C378.24 95.69 378.28 97.48 377.82 99.12L377.25 101.12L376.17 103.38L374.07 106.38L370.88 109.76L367.12 112.68L360.94 116.62C356.81 119.26 352.15 120.96 347.62 122.82C344.27 124.19 340.88 125.53 337.38 126.48L327.25 129.2L319.5 130.8L311.38 131.77L308 131.93Z"/></svg><svg class="lp" data-n="ty" viewBox="369.79 43.93 120.40 143.50" style="left:53.438%;top:24.406%;width:17.399%;height:79.722%" focusable="false"><path fill-rule="evenodd" d="M399.75 184.43L397 184.4C395.76 184.39 394.47 184.2 393.38 183.63L391.17 182.5C390.66 182.24 390.17 181.79 389.98 181.25L389.63 180.25L389.59 178.88L388.23 177.12L387.74 176.12C387.26 175.14 387.16 173.97 387.24 172.88L387.35 171.5L388 168.36L389 165.77L390 163.94L393.13 159.5L396.17 156.25L400.88 151.71L405 148.2L409.5 145.03L416.38 140.85L421.5 138.13L423 137.66L426.25 136.08L427.25 136.13L427.86 136.62C427.88 136.92 427.89 137.21 427.9 137.5L427.12 138.48L421.62 142.36C420.01 143.5 418.46 144.74 417 146.07L410.34 152.12L406.1 156.25L400.12 163.07L398.36 165.38C397.62 166.35 396.98 167.45 396.66 168.62L396.12 170.6L396.06 171.88L396.41 172.75L397.25 173.32L398.25 173.24L400.88 171.78L403.66 169.75C406.84 167.44 409.11 164.09 411.68 161.12L419.28 152.38L420.5 151.25C425.13 146.99 427.74 140.89 432.25 136.51L433.42 135.38C436.35 132.52 438.23 128.74 440.88 125.62L446.84 118.62L451.11 114.25L452.31 112.75L452.56 112C452.52 111.92 452.48 111.83 452.43 111.75C452.33 111.73 452.22 111.64 452.12 111.68L451 112.14L446.5 115.79L439.84 120.62C438.3 121.74 436.67 122.72 435 123.62C434.11 124.1 433.23 124.67 432.25 124.9L430.5 125.31L429.38 125.34L427.5 124.94L425.62 123.52L424.78 122.38C424.38 121.83 424.02 121.18 423.97 120.5L423.86 119L424.05 115.75L426.78 110.5L426.93 109.88C426.83 109.8 426.73 109.73 426.62 109.66L424.88 110.81L420.62 114.9C419.13 116.34 417.35 117.45 415.62 118.6L406.38 124.75C404.78 125.82 403.18 126.94 401.39 127.62L396.38 129.53L393 130.24C391.98 130.45 390.9 130.28 389.88 130.09C388.71 129.88 387.46 129.67 386.49 129L384.32 127.5L382.62 125.68L381.39 123.38L380.73 121.25L380.53 119L381.03 115.5L381.88 112.52L382.87 110L385.05 105.88L389.88 98.51L396.12 90.78L401.25 84.84C404.05 81.6 407.73 79.08 410.08 75.5L410.49 74.88L410.56 74.38L410.25 73.96L409.62 73.81L406.62 74.1C404.84 74.27 403.04 73.94 401.25 74.07L398.12 74.3L393.25 75.25C392.19 75.45 391.07 75.52 390 75.37L386.88 74.93C383.54 74.46 380.44 72.88 377.12 72.28L374.25 71.77L373.37 71.38L372.79 70.62L372.81 69.88L373.38 69.19C373.93 68.51 374.9 68.29 375.75 68.06L381.17 66.62L381.85 66.25C381.98 66.18 382.02 66 382.1 65.88C382.02 65.75 381.95 65.62 381.87 65.5L380.88 65.29C379.08 64.91 377.16 66.13 375.38 65.68C375.05 65.59 374.8 65.31 374.52 65.12C374.51 64.83 374.5 64.54 374.49 64.25L375.01 63.62L376.12 63.17L386.12 61.61L391.38 60.51L395.12 59.47L398.25 58.3L403.25 55.59L404.5 54.72L405 54.91L406.75 56.35L408.88 56.85L410.8 58.62L411.35 59.5L410.56 60.88L410.65 61.38C410.77 61.46 410.86 61.59 411 61.63C415.42 63.02 420.67 63.18 424.88 61.24L425.62 60.89L426.5 60.15C430.21 57.04 432.6 52.57 436.25 49.38C436.9 48.82 437.56 48.21 438.38 47.92L440.5 47.18L442.25 46.93L443.91 47.12L446 47.76L447 48.37L448.08 49.5L448.39 50.62L448.19 51.75L447.81 52.38C446.63 54.32 444.82 55.82 443.16 57.38L440.61 59.75L440.18 60.62L440.38 61.25C441.09 61.34 441.79 61.54 442.5 61.53L447.38 61.45L457.75 62.21L466 63.51L469.38 64.59L471.38 65.53L472.44 66.38L473.33 67.38L473.75 68.38L473.81 69.25L473.41 70.12L472.62 70.89L471.75 71.17L463.88 70.71L456 70.91L449.62 71.38L443.75 71.56L431.38 72.92L427.88 72.93L426.75 73.32L421.45 78.62C417.87 82.21 414.56 86.07 411.25 89.91L405.45 96.62C403.17 99.26 400.86 101.89 398.88 104.75L395.42 109.75L393.68 112.62L392.48 115.62L392.2 117L392.27 118.12L392.75 118.91L393.5 119.33L394.38 119.38L397.38 118.82L400.25 117.89L403.25 116.64L409 113.4C414.24 110.44 419.23 107.05 424.12 103.56L429.99 99.38L439.25 92.26L448.24 84.25C448.95 83.62 449.83 83.12 450.75 82.89L452 82.58L454.12 82.5C455.06 82.46 456.07 82.71 456.84 83.25L458.07 84.12L458.78 85L459.11 86.12L458.93 87.12L457.38 89.17L450.14 96.12L442 105.11L438.08 110L437.68 111.38L437.73 111.88C437.75 112.01 437.91 112.08 438 112.18L438.75 112.2L439.88 111.74C442.76 110.55 445.47 108.94 448.12 107.31L454.12 103.61L458.25 100.76C460.67 99.09 462.94 97.21 465.12 95.25C468.77 91.97 471.33 87.4 475.5 84.82L477.84 83.38L479.12 82.98L481.75 82.79L482.88 82.89L484 83.24L485.48 84.25L486.58 85.38L487.19 86.5L487.16 87.38L485.75 89.38L480.48 94.5L472.29 103.5L448.22 134.12C443.6 140 439.36 146.18 434.67 152C432.77 154.37 430.8 156.68 428.75 158.93L420.7 167.75C418.39 170.28 415.84 172.59 413.09 174.62L409.2 177.5L407.5 178.5C407.38 178.57 407.3 178.73 407.3 178.88L407.37 180.25L407.08 181.12L406.38 182.05L405.25 182.88L402.88 183.88L399.75 184.43Z"/></svg><svg class="lp" data-n="l" viewBox="476.53 40.45 89.15 93.51" style="left:68.863%;top:22.472%;width:12.883%;height:51.950%" focusable="false"><path fill-rule="evenodd" d="M493.88 130.93L490.5 130.85L489 130.63C487.78 130.45 486.6 129.86 485.62 129.1L483.07 127.12C482.3 126.53 481.63 125.74 481.25 124.84L480.15 122.25L479.66 120.12L479.53 117.25L479.74 114.75L481.13 108.5L483.43 103.62L485.65 99.5L490.75 91.68L494.49 86.62C496.85 83.43 499.49 80.43 502.31 77.62L510.21 69.75L516.62 64.22C519.5 61.75 522.54 59.46 525.63 57.25C528.57 55.14 531.52 53.01 534.68 51.25L538.29 49.25L539.88 48.64L542.38 47.18L544.87 46L548.5 44.58L550.75 43.99L553.5 43.52L556.5 43.45L558.62 43.85C559.4 43.99 560.16 44.48 560.62 45.12L561.75 46.65L562.61 48.75L562.68 50.38L562.32 52.12L561.56 54.25L559.96 56.75L558.5 58.58L555.04 62.25L549.88 67.19L540.25 75.52C536.74 78.55 532.98 81.29 529.25 84.05C524.92 87.26 520.54 90.38 516.06 93.38C513.5 95.09 510.89 96.73 508.25 98.32C506.69 99.26 505.12 100.2 503.5 101.03L497.5 104.13C496.01 104.9 495.63 106.91 494.83 108.38L493.12 111.5L491.98 114.62L491.85 117L492.08 118.12L492.6 119.25L493.12 119.83L493.75 120.14C494.35 120.44 495.09 120.47 495.75 120.35L499.38 119.63L504.38 117.8L509.12 115.63C510.98 114.78 512.72 113.69 514.46 112.62C517.3 110.89 519.77 108.52 522.79 107.12L523.62 106.74C523.75 106.79 523.88 106.85 524 106.91C524.05 107.02 524.14 107.13 524.15 107.25L524.32 112.12L524.58 113.12L523.56 114.5L516.38 119.96L509.5 124.74C507.67 126.01 505.67 127.04 503.61 127.88L498 130.13C496.7 130.66 495.27 130.96 493.88 130.93ZM507.12 92.2L514.25 86.79L519.12 83.42L524.88 78.83C527.46 76.76 529.93 74.56 532.38 72.32L542.12 63.4C544.81 60.94 547.64 58.39 549.25 55.12L549.74 54.12L549.62 53.48L549.12 53.2L548.38 53.35L542.38 57.36L536.62 61.7L528.38 68.5L521.38 74.99L515.29 81.12L513.62 83.1L506.32 90.75L505.77 91.62L505.66 92.5C505.81 92.54 505.98 92.7 506.12 92.63L507.12 92.2Z"/></svg><svg class="lp" data-n="e" viewBox="519.69 79.19 60.49 56.24" style="left:75.100%;top:43.994%;width:8.741%;height:31.244%" focusable="false"><path fill-rule="evenodd" d="M536.38 132.02L534.15 131.62L531.48 130.62L530.5 130.07L528.25 128.2C527.42 127.51 526.62 126.65 526.27 125.62L525.29 122.75L525.06 121.5C524.82 120.23 524.94 118.9 525.16 117.62C525.45 115.9 526.24 114.29 526.78 112.62C526.69 112.51 526.59 112.4 526.5 112.29L526 112.33C525.26 112.4 524.75 113.12 524.12 113.52C523.75 113.22 523.15 113.08 523 112.62L522.83 112.12L522.69 108.75L522.82 107.5L523.12 106.97C524.92 103.8 529.44 103.26 532.12 100.81L538.62 94.87C540.46 93.2 542.37 91.59 544.5 90.31L550.62 86.64C552.31 85.63 554.07 84.66 555.97 84.12L560 82.99L562.57 82.5C564.1 82.2 565.69 82.19 567.25 82.32L569.62 82.53L572.12 83.05L574.12 84.15L575.38 85.17L576.47 86.75L577.01 88.25L577.04 90.62L576.75 92.46L575.51 95L573.85 97.25C572.57 98.99 570.93 100.51 569.12 101.69L562.91 105.75L556.38 109.19L553.5 110.18L549.25 111.2L546.75 111.42L544.38 111.08L542.12 109.59C541.79 109.64 541.46 109.7 541.13 109.75L540.28 110.75L538.32 115.38L537.64 117.75L537.52 119.88L537.84 120.88L538.5 121.67L539.62 122.43L541 122.83C542.12 123.16 543.36 123.14 544.5 122.91L549.5 121.89L559.88 117.64L567.79 113.5L571.25 111.41C573.06 110.32 574.75 109.05 576.5 107.87C576.62 107.93 576.75 107.98 576.88 108.04C576.93 108.15 577.02 108.25 577.03 108.38L577.18 111.88L577.12 114C577.11 114.36 576.92 114.72 576.69 115C574.31 117.9 570.54 119.32 567.38 121.34C565.41 122.6 563.47 123.91 561.38 124.94L555.5 127.82L549 130.44C547.21 131.16 545.29 131.56 543.38 131.82C541.06 132.13 538.67 132.43 536.38 132.02ZM549.38 104.97L554.25 102.31L558.27 99.75C560 98.65 561.6 97.31 563 95.82L566.36 92.25L567.48 90.62L567.56 90L567.38 89.47L566.88 89.05L566.25 88.89L564.75 89.24L561.12 91.25L555.75 94.83L550.88 98.75C549.29 100.02 547.62 101.3 546.5 103L546.08 103.62L546.16 104.38L546.75 104.87L547.62 105.16C548.18 105.34 548.86 105.25 549.38 104.97Z"/></svg><svg class="lp" data-n="s" viewBox="572.56 76.02 76.86 59.61" style="left:82.740%;top:42.233%;width:11.107%;height:33.117%" focusable="false"><path fill-rule="evenodd" d="M590 132.63L587.88 132.29L585.55 131.62L582.62 129.73L580.38 127.25L579.19 125.25C578.58 124.22 578.06 123.07 577.99 121.88L577.86 119.5L577.98 117.75L578.29 116.88L579.12 115.75C579.66 115.01 580.46 114.5 581.12 113.88L582.12 113.85L583.12 114.39L585.96 118.12L587.38 119.69L589.5 121.58L590.5 121.96C591.01 122.15 591.63 122.05 592.12 121.83L595 120.55L598 118.71L599.6 117.12L601.75 114.32C602.95 112.75 603.91 110.98 604.57 109.12L606.67 103.25L607.23 100.62L607.76 99.38C608.61 97.34 609.16 95.07 608.96 92.88L608.85 91.75C608.65 91.61 608.45 91.47 608.25 91.33L607.38 91.71L605.12 93.74C601.15 97.31 596.92 100.59 592.62 103.76L582.25 111.4C580.34 112.81 578.25 113.97 576.25 115.25C576.13 115.2 576 115.15 575.88 115.1L575.7 114.5L575.57 109.75C575.56 109.24 575.8 108.75 575.91 108.25L588 99.39L589.16 98.25L594.25 94.39C598.3 91.32 602.25 88.09 605.97 84.62L609.88 80.99L611.88 79.65L613.38 79.16L615.12 79.02L617.65 79.25L619.25 79.62C620.36 79.87 621.56 80.35 622.25 81.26L623.47 82.88L623.76 83.75L623.45 86.12L622.57 88.75C620.83 93.94 620.31 99.49 618.5 104.65L616.97 109L614.32 113.75L614.21 114.38C614.31 114.5 614.4 114.62 614.5 114.75L615.25 114.61L617.25 113.49L626.38 107.68L636.25 100.53L639.03 98.25C640.7 96.88 642.22 95.15 644.25 94.42L644.88 94.2L645.38 94.25C645.79 94.29 645.98 94.83 646.28 95.12C646.29 95.5 646.42 95.89 646.31 96.25C646.16 96.78 645.81 97.27 645.38 97.62L636.1 105.38L623.25 115.57C621.88 116.66 620.44 117.67 618.97 118.62L611 123.78L605.75 126.93L600.12 129.76L595.38 131.6L591.5 132.57L590 132.63Z"/></svg></div>
+        <svg class="logo-svg lg-final" viewBox="0 0 692 180" aria-hidden="true" focusable="false"><use href="#lg-full"/></svg>
+        <svg class="logo-svg lg-sheen" viewBox="0 0 692 180" aria-hidden="true" focusable="false"><g clip-path="url(#lg-clip)"><g class="sheen" id="sheen"><rect x="-150" y="-30" width="130" height="250" fill="url(#lg-shine)" transform="skewX(-20)"/></g></g></svg>
+      </div>
+      <div class="hero-rule" aria-hidden="true"><i></i><b></b><i></i></div>
+      <p class="hero-tag">Menswear for every day.</p>
+      <p class="hero-sub">Shirts, T-shirts, trousers, jeans and shoes, straight from the shop floor.</p>
+      <div class="hero-cta"><a class="btn brand" href="#sec-shirts" data-go="sec-shirts">Shop the collection</a><a class="btn" href="#contact" data-go="contact">Visit the shop</a></div>
+    </div>
+    <div class="hint" id="hint">Scroll</div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<div id="rooms"></div>
+<div id="shops"></div>
+
+<section class="band dark open" id="contact">
+  <div class="wrap">
+    <div class="flogo" role="img" aria-label="AD Styles"><svg viewBox="0 0 692 180" aria-hidden="true" focusable="false"><use href="#lg-full"/></svg></div>
+    <div class="vgrid">
+      <div>
+        <p class="eyebrow rv">Contact</p>
+        <h2 class="h2 rv" style="--i:1">Come in, <em>have a look.</em></h2>
+        <p class="lead rv" style="--i:2">Found something you like? Pick it here, then come to the shop, call us or message on WhatsApp and we will keep it ready for you.</p>
+      </div>
+      <dl class="dl rv" style="--i:2">
+        <div><dt>Shop</dt><dd>AD STYLES</dd></div>
+        <div><dt>Address</dt><dd>Tennur, Trichy<br>Tamil Nadu</dd></div>
+        <div><dt>Phone</dt><dd class="phone"><span id="ph">+91 89735 45849</span><button class="btn sm" type="button" id="copy-ph">Copy</button></dd></div>
+        <div class="cact">
+          <a class="btn solid" href="tel:+918973545849">Call now</a>
+          <a class="btn" href="https://wa.me/918973545849" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=AD%20STYLES%20Tennur%20Trichy%20Tamil%20Nadu" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </dl>
+    </div>
+    <footer><span>AD STYLES</span><span>Tennur &middot; Trichy &middot; Tamil Nadu</span></footer>
+  </div>
+</section>
+
+</main>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="v-name" aria-hidden="true">
+  <div class="vbar">
+    <button class="vback" type="button" id="v-back">&larr; <span>Back to shop</span></button>
+    <p class="vcrumb" id="v-crumb"></p>
+    <button class="bagbtn" type="button" id="v-bag" aria-label="Open bag">Bag <b id="v-bag-n">0</b></button>
+  </div>
+  <div class="vwrap">
+    <div class="vstage">
+      <div class="vgal">
+        <div class="vthumbs" id="vthumbs" role="group" aria-label="Product photos"></div>
+        <div class="vmain" id="vmain">
+          <img id="vimg" alt="" draggable="false">
+          <button class="vnav prev" type="button" id="v-prev" aria-label="Previous photo">&lsaquo;</button>
+          <button class="vnav next" type="button" id="v-next" aria-label="Next photo">&rsaquo;</button>
+          <span class="vcap" id="vcap"></span>
+          <div class="vzoom" role="group" aria-label="Zoom">
+            <button type="button" id="vz-out" aria-label="Zoom out">&minus;</button>
+            <span id="vz-val">100%</span>
+            <button type="button" id="vz-in" aria-label="Zoom in">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="vside">
+      <button class="vclose" type="button" id="v-close" aria-label="Close">&times;</button>
+      <p class="eyebrow" id="v-code"></p>
+      <h3 id="v-name"></h3>
+      <p class="vprice" id="v-price"></p>
+      <p class="vspec" id="v-spec"></p>
+      <div class="vblk"><div class="plabel">Colour <span id="v-colname"></span></div><div class="sws" id="v-cols"></div></div>
+      <div class="vblk"><div class="plabel"><span id="v-sizelabel" style="color:inherit">Size</span> <span id="v-sizenote"></span></div><div class="szs" id="v-sizes"></div></div>
+      <div class="vblk"><div class="plabel">Quantity</div><div class="qty vqty"><button type="button" data-vq="-1" aria-label="Fewer">&minus;</button><span id="v-qty">1</span><button type="button" data-vq="1" aria-label="More">+</button></div></div>
+      <div class="vact">
+        <button class="btn solid" type="button" id="v-add">Add to cart</button>
+        <button class="btn vwish" type="button" id="v-wishbtn" aria-pressed="false" aria-label="Save to wishlist"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 20.6 4.6 13.4a4.9 4.9 0 0 1 0-7 5 5 0 0 1 7 0l.4.4.4-.4a5 5 0 0 1 7 0 4.9 4.9 0 0 1 0 7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> Save</button>
+      </div>
+      <a class="btn wa" id="v-wa" href="https://wa.me/918973545849" target="_blank" rel="noopener">Order on WhatsApp</a>
+      <a class="vfull" id="v-full" href="#" hidden>View full details &rarr;</a>
+      <ul class="vdeliv"><li>Pick up from the shop in Tennur, Trichy</li><li>Delivery on request, arranged on WhatsApp</li><li>Come in and try it on before you buy</li></ul>
+      <div class="vdet" id="v-det"></div>
+      <p class="vnote">Sample prices and sizes. Ask at the shop for today&rsquo;s stock.</p>
+    </aside>
+  </div>
+  <section class="vrel" id="v-rel" aria-label="More products"></section>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Your bag" aria-hidden="true">
+  <div class="dhead"><div class="dtabs" role="group" aria-label="Bag or saved"><button type="button" data-dm="bag" aria-pressed="true">Bag <b id="dt-bag">0</b></button><button type="button" data-dm="saved" aria-pressed="false">Saved <b id="dt-saved">0</b></button></div><button class="round" type="button" id="bag-close" aria-label="Close">&times;</button></div>
+  <div class="dlist" id="dlist"></div>
+  <div class="dfoot" id="dfoot">
+    <div class="dtot">Total <span id="dtot">&#8377;0</span></div>
+    <a class="btn solid brand" id="checkout" href="https://wa.me/918973545849" target="_blank" rel="noopener">Order on WhatsApp</a>
+    <button class="btn sm" type="button" id="bag-clear">Clear bag</button>
+    <p>Payment and delivery are arranged with the shop on WhatsApp or at the counter.</p>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
+var clamp=function(v,a,b){return Math.min(b,Math.max(a,v))};
+var inr=function(n){return '₹'+n.toLocaleString('en-IN')};
+var pad=function(n){return (n<10?'0':'')+n};
+var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+
+/* =====================================================================================
+   STORE DATA
+   Every product photograph is a real photo file inside the  img/  folder.
+   To change a photo, put the new file in img/ and change its file name below.
+   Prices, discounts, sizes and descriptions are sample data: edit them here.
+   V(label, file, mode)   mode 'fit'  = cut-out garment (shown whole, on the studio background)
+                          mode 'fill' = full photograph (fills the frame)
+   Each colour of a product has its own set of photos (c.v). The first photo is the card
+   image, the second one is shown when the card is hovered.
+   ===================================================================================== */
+var IMGDIR='img/';
+function V(l,f,m){return {l:l,f:IMGDIR+f,m:m||'fill'}}
+var SZ=['S','M','L','XL','XXL'],SZW=['28','30','32','34','36','38'],SZS=['6','7','8','9','10','11'];
+var CARE={
+  shirts:'Machine wash cold, iron on medium. Do not bleach. Hang to dry in shade.',
+  tshirts:'Machine wash cold with similar colours, inside out. Tumble dry low.',
+  pants:'Machine wash cold, iron on medium. Dry in shade.',
+  jeans:'Wash inside out in cold water. Dry in shade to keep the colour.',
+  shoes:'Wipe with a soft damp cloth. Keep away from direct heat and water.'
+};
+var STORE={
+  shirts:[
+    {id:'sh-striped',cat:'shirts',kind:'cotton',code:'SH-01',name:'Striped Cotton Shirt',price:999,mrp:1499,fabric:'Cotton',fit:'Regular',badge:'New',
+     desc:'A crisp white shirt with fine grey vertical stripes, a spread collar, a full button placket and roll-up sleeves held with button tabs. Smart enough for work, easy enough for the weekend.',
+     det:[['Fabric','Cotton'],['Fit','Regular fit'],['Sleeve','Full sleeve, roll-up tab'],['Collar','Spread collar'],['Pattern','Vertical stripe']],
+     cols:[{n:'White stripe',c:'#ecebe7',rack:'shirt-white-striped',v:[V('Front, on hanger','shirt-white-striped.webp','fit'),V('Collar & placket','shirt-white-striped-detail.webp')]}]},
+    {id:'sh-black',cat:'shirts',kind:'cotton',code:'SH-02',name:'Black Cotton Shirt',price:1099,mrp:1599,fabric:'Cotton',fit:'Slim',oos:['XXL'],
+     desc:'A plain black shirt with a chest pocket, a clean spread collar and roll-up sleeves. A wardrobe basic that works with everything.',
+     det:[['Fabric','Cotton'],['Fit','Slim fit'],['Sleeve','Full sleeve, roll-up tab'],['Collar','Spread collar'],['Pocket','Chest pocket']],
+     cols:[{n:'Black',c:'#1d1c1c',rack:'shirt-black',v:[V('Front, on hanger','shirt-black.webp','fit'),V('Collar & placket','shirt-black-detail.webp')]}]},
+    {id:'sh-olive',cat:'shirts',kind:'cotton',code:'SH-03',name:'Olive Check Shirt',price:1199,mrp:1799,fabric:'Cotton',fit:'Regular',badge:'Bestseller',
+     desc:'A relaxed olive and cream window-pane check with a bias-cut chest pocket and roll-up sleeves. Soft, easy and made for layering.',
+     det:[['Fabric','Cotton'],['Fit','Regular fit'],['Sleeve','Full sleeve, roll-up tab'],['Pattern','Window-pane check'],['Pocket','Chest pocket']],
+     cols:[{n:'Olive check',c:'#5b6140',rack:'shirt-olive-check',v:[V('Front, on hanger','shirt-olive-check.webp','fit'),V('Collar & placket','shirt-olive-check-detail.webp')]}]},
+    {id:'sh-linen',cat:'shirts',kind:'linen',code:'SH-04',name:'Textured Linen Shirt',price:1299,mrp:1899,fabric:'Linen blend',fit:'Regular',oos:['S'],
+     desc:'A textured linen-look shirt with a chest pocket and roll-up sleeves. Light and airy for hot days, in beige and navy.',
+     det:[['Fabric','Linen blend'],['Fit','Regular fit'],['Sleeve','Full sleeve, roll-up tab'],['Collar','Spread collar'],['Pocket','Chest pocket']],
+     cols:[
+       {n:'Beige',c:'#d9c7a8',rack:'shirt-beige-linen',v:[V('Front, on hanger','shirt-beige-linen.webp','fit'),V('Collar & placket','shirt-beige-linen-detail.webp')]},
+       {n:'Navy',c:'#243148',rack:'shirt-navy-linen',v:[V('Front, on hanger','shirt-navy-linen.webp','fit'),V('Collar & placket','shirt-navy-linen-detail.webp')]}
+     ]}
+  ],
+  tshirts:[
+    {id:'tee-brooklyn',cat:'tshirts',code:'TS-01',name:'Brooklyn Script Tee',price:599,mrp:899,fabric:'Cotton jersey',fit:'Oversized',badge:'New',
+     desc:'A black oversized tee with a white script print on the chest. Drop shoulders, a ribbed crew neck and a soft, heavy cotton feel.',
+     det:[['Fabric','Cotton jersey'],['Fit','Oversized, drop shoulder'],['Neck','Ribbed crew neck'],['Print','Chest script print']],
+     cols:[{n:'Black',c:'#1d1c1c',rack:'tee-brooklyn',v:[V('Front, on hanger','tee-brooklyn-card.jpg'),V('Print closeup','tee-brooklyn-closeup.jpg')]}]},
+    {id:'tee-teddy',cat:'tshirts',code:'TS-02',name:'Teddy Patch Tee',price:649,mrp:999,fabric:'Cotton jersey',fit:'Oversized',badge:'Bestseller',
+     desc:'A white oversized tee with a woven teddy-bear patch on the chest. Boxy through the body with a ribbed crew neck.',
+     det:[['Fabric','Cotton jersey'],['Fit','Oversized, drop shoulder'],['Neck','Ribbed crew neck'],['Detail','Woven teddy patch']],
+     cols:[{n:'White',c:'#f2f1ee',rack:'tee-teddy',v:[V('Front, folded','tee-teddy-folded.webp','fit'),V('On the rack','tee-teddy-card.jpg'),V('Patch closeup','tee-teddy-closeup.jpg')]}]},
+    {id:'tee-la',cat:'tshirts',code:'TS-03',name:'Los Angeles Varsity Tee',price:699,mrp:999,fabric:'Cotton jersey',fit:'Oversized',
+     desc:'A deep green oversized tee with a bold white varsity print. Soft cotton jersey with a ribbed crew neck.',
+     det:[['Fabric','Cotton jersey'],['Fit','Oversized, drop shoulder'],['Neck','Ribbed crew neck'],['Print','Varsity chest print']],
+     cols:[{n:'Forest green',c:'#1f3a2c',rack:'tee-la-varsity',v:[V('On the rack','tee-la-varsity-card.jpg'),V('Print detail','tee-la-varsity-body.jpg')]}]},
+    {id:'tee-sand',cat:'tshirts',code:'TS-04',name:'Sand Plain Tee',price:499,mrp:799,fabric:'Cotton jersey',fit:'Regular',oos:['XXL'],
+     desc:'A plain sand-coloured tee in soft cotton jersey with a ribbed crew neck and a relaxed fit. Goes with everything.',
+     det:[['Fabric','Cotton jersey'],['Fit','Relaxed'],['Neck','Ribbed crew neck']],
+     cols:[{n:'Sand',c:'#d9cbb2',rack:'tee-sand',v:[V('On the rack','tee-sand-card.jpg'),V('Fabric detail','tee-sand-body.jpg')]}]},
+    {id:'tee-triangle',cat:'tshirts',code:'TS-05',name:'Triangle Logo Tee',price:599,mrp:899,fabric:'Cotton jersey',fit:'Oversized',
+     desc:'A washed black oversized tee with a small triangle logo on the chest. Clean and minimal.',
+     det:[['Fabric','Cotton jersey'],['Fit','Oversized, drop shoulder'],['Neck','Ribbed crew neck'],['Print','Small chest logo']],
+     cols:[{n:'Black',c:'#26262a',rack:'tee-triangle',v:[V('On the rack','tee-triangle-card.jpg'),V('Fabric detail','tee-triangle-body.jpg')]}]},
+    {id:'tee-script',cat:'tshirts',code:'TS-06',name:'Script Chest Tee',price:599,mrp:899,fabric:'Cotton jersey',fit:'Oversized',
+     desc:'A black oversized tee with a small white script print on the chest. Drop shoulders and a soft cotton hand-feel.',
+     det:[['Fabric','Cotton jersey'],['Fit','Oversized, drop shoulder'],['Neck','Ribbed crew neck'],['Print','Chest script print']],
+     cols:[{n:'Black',c:'#1d1c1c',rack:'tee-ad-script',v:[V('Front, on hanger','tee-ad-script-card.jpg'),V('Print closeup','tee-ad-script-closeup.jpg')]}]},
+    {id:'tee-bk-varsity',cat:'tshirts',code:'TS-07',name:'Brooklyn Varsity Tee',price:699,mrp:999,fabric:'Cotton jersey',fit:'Oversized',
+     desc:'A white oversized tee with a big black varsity Brooklyn print. Heavy cotton jersey with a ribbed crew neck.',
+     det:[['Fabric','Cotton jersey'],['Fit','Oversized, drop shoulder'],['Neck','Ribbed crew neck'],['Print','Varsity chest print']],
+     cols:[{n:'White',c:'#f2f1ee',rack:'tee-bk-varsity',v:[V('On the rack','tee-bk-varsity-card.jpg'),V('Print detail','tee-bk-varsity-body.jpg')]}]},
+    {id:'tee-emblem',cat:'tshirts',code:'TS-08',name:'Emblem Tee',price:649,mrp:949,fabric:'Cotton jersey',fit:'Oversized',
+     desc:'A forest green oversized tee with a small white emblem on the chest. Soft cotton jersey and a relaxed shape.',
+     det:[['Fabric','Cotton jersey'],['Fit','Oversized, drop shoulder'],['Neck','Ribbed crew neck'],['Print','Small chest emblem']],
+     cols:[{n:'Forest green',c:'#1f3a2c',rack:'tee-emblem',v:[V('On the rack','tee-emblem-card.jpg'),V('Fabric detail','tee-emblem-body.jpg')]}]},
+    {id:'tee-sand-print',cat:'tshirts',code:'TS-09',name:'Sand Graphic Tee',price:649,mrp:949,fabric:'Cotton jersey',fit:'Oversized',
+     desc:'A sand oversized tee with a small illustrated graphic on the chest. Easy, soft and made for every day.',
+     det:[['Fabric','Cotton jersey'],['Fit','Oversized, drop shoulder'],['Neck','Ribbed crew neck'],['Print','Chest graphic']],
+     cols:[{n:'Sand',c:'#d9cbb2',rack:'tee-sand-print',v:[V('On the rack','tee-sand-print-card.jpg'),V('Graphic detail','tee-sand-print-body.jpg')]}]}
+  ],
+  pants:[
+    {id:'pt-cargo',cat:'pants',kind:'cargo',code:'TR-01',name:'Cargo Trousers',price:1299,mrp:1899,fabric:'Cotton twill',fit:'Relaxed',badge:'New',
+     desc:'Relaxed cargo trousers with large flap pockets on the thighs, slant front pockets and belt loops. Hard-wearing cotton twill in beige and black.',
+     det:[['Fabric','Cotton twill'],['Fit','Relaxed straight'],['Pockets','Two cargo, two slant, back'],['Waist','Belt loops, button and zip']],
+     cols:[
+       {n:'Beige',c:'#d7c3a0',v:[V('Front, on hanger','pants-beige-cargo.webp','fit'),V('Waist & pockets','pants-beige-cargo-detail.webp')]},
+       {n:'Black',c:'#1b1b1c',v:[V('Front, on hanger','pants-black-cargo.webp','fit'),V('Waist & pockets','pants-black-cargo-detail.webp')]}
+     ]},
+    {id:'pt-straight',cat:'pants',kind:'straight',code:'TR-02',name:'Straight Fit Trousers',price:1199,mrp:1699,fabric:'Cotton blend',fit:'Straight',oos:['38'],
+     desc:'Smart straight-fit trousers with a clean waistband, belt loops and slant pockets. Sits neatly from hip to hem. Grey and navy.',
+     det:[['Fabric','Cotton blend'],['Fit','Straight'],['Pockets','Slant front, back'],['Waist','Belt loops, button and zip']],
+     cols:[
+       {n:'Grey',c:'#aaa9a8',v:[V('Front, on hanger','pants-grey-straight.webp','fit'),V('Waist & pockets','pants-grey-straight-detail.webp')]},
+       {n:'Navy',c:'#1e2a44',v:[V('Front, on hanger','pants-navy-straight.webp','fit'),V('Waist & pockets','pants-navy-straight-detail.webp')]}
+     ]},
+    {id:'pt-chino',cat:'pants',kind:'chino',code:'TR-03',name:'Khaki Cargo Chinos',price:1399,mrp:1999,fabric:'Cotton twill',fit:'Regular',
+     desc:'Khaki chinos in soft cotton twill with a button waist, five-pocket styling and flap cargo pockets. Easy with shirts and tees alike.',
+     det:[['Fabric','Cotton twill'],['Fit','Regular'],['Pockets','Front, back and cargo'],['Waist','Button and zip']],
+     cols:[{n:'Khaki',c:'#c9ad82',v:[V('Front, folded','pants-khaki-chino.webp','fit'),V('Waist & pockets','pants-khaki-chino-detail.webp')]}]}
+  ],
+  jeans:[
+    {id:'jn-charcoal',cat:'jeans',kind:'denim',code:'JN-01',name:'Charcoal Wash Jeans',price:1499,mrp:2199,fabric:'Stretch denim',fit:'Tapered',badge:'Bestseller',
+     desc:'Charcoal washed jeans with a faded finish, five pockets and a tapered leg. Comfortable stretch denim with a clean hem.',
+     det:[['Fabric','Stretch denim'],['Fit','Tapered'],['Wash','Charcoal, faded'],['Pockets','Five-pocket']],
+     cols:[{n:'Charcoal',c:'#3c3c3e',v:[V('Front, on hanger','jeans-charcoal-wash.webp','fit'),V('Waist & pockets','jeans-charcoal-wash-detail.webp')]}]},
+    {id:'jn-blue',cat:'jeans',kind:'denim',code:'JN-02',name:'Mid Blue Wash Jeans',price:1599,mrp:2299,fabric:'Denim',fit:'Regular',
+     desc:'Classic mid-blue washed jeans with contrast stitching, copper rivets and a five-pocket build. A true everyday pair.',
+     det:[['Fabric','Denim'],['Fit','Regular'],['Wash','Mid blue'],['Pockets','Five-pocket']],
+     cols:[{n:'Mid blue',c:'#3b5f8f',v:[V('Front, folded','jeans-blue-wash.webp','fit'),V('Waist & pockets','jeans-blue-wash-detail.webp')]}]}
+  ],
+  shoes:[
+    {id:'sh-leather',cat:'shoes',type:'sneaker',sub:'Sneakers',code:'FW-01',name:'White Leather Sneakers',price:1499,mrp:2199,fabric:'Leather look',fit:'',badge:'New',
+     desc:'Clean all-white low-top sneakers with a flat lace-up front, stitched side panels and a chunky cushioned sole. Goes with everything.',
+     det:[['Type','Sneakers'],['Upper','Leather look'],['Sole','Cushioned rubber'],['Closure','Lace-up']],
+     cols:[{n:'White',g:'White',c:'#f1efe9',v:[V('Pair, front','shoe-white-leather.webp','fit'),V('Side & laces','shoe-white-leather-detail.webp')]}]},
+    {id:'sh-court',cat:'shoes',type:'sneaker',sub:'Sneakers',code:'FW-02',name:'White Court Sneakers',price:1799,mrp:2499,fabric:'Leather look',fit:'',oos:['6','11'],
+     desc:'White court-style sneakers with a contrast side stripe, a padded collar and a thick white sole. Sporty and easy to wear every day.',
+     det:[['Type','Sneakers'],['Upper','Leather look'],['Sole','Cushioned rubber'],['Closure','Lace-up']],
+     cols:[{n:'White / black',g:'White',c:'#ecebe7',v:[V('Side view','shoe-white-court.jpg'),V('Stripe & laces','shoe-white-court-detail.jpg')]}]},
+    {id:'sh-street',cat:'shoes',type:'sneaker',sub:'Sneakers',code:'FW-03',name:'Black Street Sneakers',price:1699,mrp:2399,fabric:'Leather look',fit:'',
+     desc:'Black street sneakers with a white platform sole, a padded tongue and a flexible fit. Sharp with jeans and cargos.',
+     det:[['Type','Sneakers'],['Upper','Leather look'],['Sole','White platform rubber'],['Closure','Lace-up']],
+     cols:[{n:'Black',g:'Black',c:'#1a1816',v:[V('Side view','shoe-black-street.jpg'),V('Toe & laces','shoe-black-street-detail.jpg')]}]},
+    {id:'sh-derby',cat:'shoes',type:'formal',sub:'Formal shoes',code:'FW-04',name:'Black Leather Derby',price:2199,mrp:2999,fabric:'Leather',fit:'',
+     desc:'A polished black leather derby with a stitched cap toe, lace-up front and a stacked heel. Made for work and occasions.',
+     det:[['Type','Formal derby'],['Upper','Leather'],['Sole','Stacked heel, rubber'],['Closure','Lace-up']],
+     cols:[{n:'Black',g:'Black',c:'#1a1816',v:[V('Three-quarter view','shoe-derby.webp','fit'),V('Toe & laces','shoe-derby-detail.webp')]}]}
+  ]
+};
+var ITEMS={};
+Object.keys(STORE).forEach(function(k){STORE[k].forEach(function(it){ITEMS[it.id]=it})});
+/* photo geometry: pixel sizes of each cutout and where its hanger hook meets the rail (see manifest) */
+var GEO={"shirt-white-striped":{"w":626,"h":896,"hx":324,"rail":40},"shirt-black":{"w":628,"h":910,"hx":314,"rail":40},"shirt-olive-check":{"w":620,"h":912,"hx":310,"rail":40},"shirt-beige-linen":{"w":616,"h":918,"hx":308,"rail":40},"shirt-navy-linen":{"w":640,"h":926,"hx":320,"rail":40},"pants-beige-cargo":{"w":544,"h":1086,"hx":282,"rail":38},"pants-black-cargo":{"w":472,"h":1086,"hx":224,"rail":38},"pants-grey-straight":{"w":436,"h":1094,"hx":202,"rail":38},"pants-navy-straight":{"w":482,"h":1088,"hx":218,"rail":38},"jeans-charcoal-wash":{"w":494,"h":1092,"hx":232,"rail":38},"rack":{"tee-brooklyn":{"x":0,"w":488,"h":790,"hx":236,"rail":33,"z":5,"row":"r1"},"tee-teddy":{"x":372,"w":308,"h":790,"hx":66,"rail":33,"z":4,"row":"r1"},"tee-la-varsity":{"x":578,"w":344,"h":806,"hx":80,"rail":33,"z":3,"row":"r1"},"tee-sand":{"x":792,"w":320,"h":822,"hx":72,"rail":33,"z":2,"row":"r1"},"tee-triangle":{"x":992,"w":308,"h":810,"hx":72,"rail":33,"z":1,"row":"r1"},"tee-ad-script":{"x":0,"w":368,"h":738,"hx":208,"rail":36,"z":4,"row":"r2"},"tee-bk-varsity":{"x":320,"w":332,"h":740,"hx":102,"rail":36,"z":3,"row":"r2"},"tee-emblem":{"x":538,"w":290,"h":742,"hx":74,"rail":38,"z":2,"row":"r2"},"tee-sand-print":{"x":708,"w":292,"h":740,"hx":74,"rail":38,"z":1,"row":"r2"}},"pants-khaki-chino":{"w":346,"h":486}};
+/* ---------- UI ---------- */
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function toast(msg){
+  var t=$('toast');t.textContent=msg;t.classList.add('on');
+  clearTimeout(toast.h);toast.h=setTimeout(function(){t.classList.remove('on')},2200);
+}
+function copyText(txt,msg){
+  var done=function(){toast(msg)};
+  var fallback=function(){
+    var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();done();
+  };
+  try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(e){fallback()}
+}
+function shake(el){el&&el.animate&&!reduce&&el.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(-3px)'},{transform:'translateX(0)'}],{duration:340})}
+
+/* ---------- product helpers ---------- */
+var SECL={shirts:'Shirts',tshirts:'T-Shirts',pants:'Trousers',jeans:'Jeans',shoes:'Shoes'};
+var HEART='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 20.6 4.6 13.4a4.9 4.9 0 0 1 0-7 5 5 0 0 1 7 0l.4.4.4-.4a5 5 0 0 1 7 0 4.9 4.9 0 0 1 0 7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>';
+function sizesOf(it){return it.cat==='shoes'?SZS:(it.cat==='pants'||it.cat==='jeans')?SZW:SZ}
+function sizeWord(it){return it.cat==='shoes'?'Size (UK)':(it.cat==='pants'||it.cat==='jeans')?'Waist (inches)':'Size'}
+function oosOf(it){return it.oos||[]}
+function offOf(it){return it.mrp>it.price?Math.round((1-it.price/it.mrp)*100):0}
+function priceHTML(it){return '<b>'+inr(it.price)+'</b>'+(it.mrp>it.price?' <s>'+inr(it.mrp)+'</s> <em>'+offOf(it)+'% off</em>':'')}
+function viewsOf(it,ci){return it.cols[ci||0].v}
+function imgHTML(v,cls,alt){return '<img class="'+(v.m==='fit'?'fit':'fill')+(cls?' '+cls:'')+'" src="'+v.f+'" alt="'+esc(alt||'')+'" decoding="async" draggable="false">'}
+function sizeBtns(it,cls,sel){
+  var o=oosOf(it);
+  return sizesOf(it).map(function(z){
+    var x=o.indexOf(z)>=0;
+    return '<button type="button" class="'+cls+'" data-z="'+z+'" aria-pressed="'+(z===sel)+'"'+(x?' disabled title="Out of stock"':'')+'>'+z+'</button>';
+  }).join('');
+}
+function dotsHTML(it,sel,cls){
+  return it.cols.map(function(c,i){return '<button type="button" class="'+cls+'" data-ci="'+i+'" title="'+esc(c.n)+'" aria-label="'+esc(c.n)+'" aria-pressed="'+(i===sel)+'" style="--sw:'+c.c+'"></button>'}).join('');
+}
+
+/* ---------- wishlist (saved) ---------- */
+var wish=[];
+try{wish=JSON.parse(localStorage.getItem('adsWish')||'[]').filter(function(id){return ITEMS[id]})}catch(e){wish=[]}
+function saveWish(){try{localStorage.setItem('adsWish',JSON.stringify(wish))}catch(e){}}
+function syncWish(){
+  $('wish-n').textContent=wish.length;$('dt-saved').textContent=wish.length;
+  document.querySelectorAll('[data-wish]').forEach(function(b){b.setAttribute('aria-pressed',String(wish.indexOf(b.dataset.wish)>=0))});
+  if(dmode==='saved'&&$('drawer').classList.contains('on'))renderCart();
+}
+function toggleWish(id){
+  var i=wish.indexOf(id);
+  if(i>=0){wish.splice(i,1);toast('Removed from saved')}else{wish.push(id);toast('Saved to your wishlist')}
+  saveWish();syncWish();
+}
+
+/* ---------- the bag ---------- */
+var cart=[],dmode='bag';
+try{cart=JSON.parse(localStorage.getItem('adsBag2')||'[]').filter(function(r){return ITEMS[r.id]&&ITEMS[r.id].cols[r.ci]})}catch(e){cart=[]}
+function saveCart(){try{localStorage.setItem('adsBag2',JSON.stringify(cart))}catch(e){}}
+function addToCart(it,ci,size,qty){
+  var row=cart.filter(function(r){return r.id===it.id&&r.ci===ci&&r.size===size})[0];
+  if(row)row.q=Math.min(9,row.q+qty);else cart.push({id:it.id,ci:ci,size:size,q:Math.min(9,qty)});
+  saveCart();renderCart();
+  [$('bag-open'),$('v-bag')].forEach(function(b){b.animate&&!reduce&&b.animate([{transform:'scale(1)'},{transform:'scale(1.12)'},{transform:'scale(1)'}],{duration:450,easing:'ease-out'})});
+}
+function cartTotal(){return cart.reduce(function(s,r){return s+ITEMS[r.id].price*r.q},0)}
+function sizeTxt(it,size){return (it.cat==='shoes'?'UK ':(it.cat==='pants'||it.cat==='jeans')?'Waist ':'')+size}
+function thumbHTML(it,ci){var v=viewsOf(it,ci)[0];return '<span class="cthumb '+(v.m==='fit'?'fit':'fill')+'"><img alt="" src="'+v.f+'"></span>'}
+function renderCart(){
+  var n=cart.reduce(function(s,r){return s+r.q},0);
+  $('bag-n').textContent=n;$('v-bag-n').textContent=n;$('dt-bag').textContent=n;
+  $('wish-n').textContent=wish.length;$('dt-saved').textContent=wish.length;
+  document.querySelectorAll('.dtabs button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.dm===dmode))});
+  $('drawer').setAttribute('aria-label',dmode==='bag'?'Your bag':'Saved items');
+  var list=$('dlist');
+  if(dmode==='saved'){
+    $('dfoot').style.display='none';
+    if(!wish.length){list.innerHTML='<p class="dempty">Nothing saved yet.<br>Tap the heart on any product.</p>';return}
+    list.innerHTML=wish.map(function(id){
+      var it=ITEMS[id];
+      return '<div class="crow" data-id="'+id+'">'+thumbHTML(it,0)+'<div><b>'+it.name+'</b><small>'+it.code+' · '+SECL[it.cat]+'</small>'+
+        '<button class="rm" type="button" data-open="1">View</button><button class="rm" type="button" data-unsave="1">Remove</button></div><div class="cp">'+inr(it.price)+'</div></div>';
+    }).join('');
+    return;
+  }
+  if(!cart.length){list.innerHTML='<p class="dempty">Your bag is empty.<br>Pick something you like.</p>';$('dfoot').style.display='none';return}
+  $('dfoot').style.display='';
+  list.innerHTML=cart.map(function(r,i){
+    var it=ITEMS[r.id];
+    return '<div class="crow" data-i="'+i+'">'+thumbHTML(it,r.ci)+'<div><b>'+it.name+'</b><small>'+it.cols[r.ci].n+' · '+sizeTxt(it,r.size)+'</small>'+
+      '<div class="qty"><button type="button" data-q="-1" aria-label="Fewer">&minus;</button><span>'+r.q+'</span><button type="button" data-q="1" aria-label="More">+</button></div>'+
+      '<button class="rm" type="button" data-rm="1">Remove</button></div><div class="cp">'+inr(it.price*r.q)+'</div></div>';
+  }).join('');
+  $('dtot').textContent=inr(cartTotal());
+  var msg='Hi AD STYLES, I would like to order:\n'+cart.map(function(r,k){var it=ITEMS[r.id];return (k+1)+'. '+it.name+' ('+it.code+'), '+it.cols[r.ci].n+', '+sizeTxt(it,r.size)+' x '+r.q+' = '+inr(it.price*r.q)}).join('\n')+'\nTotal: '+inr(cartTotal());
+  $('checkout').href='https://wa.me/918973545849?text='+encodeURIComponent(msg);
+}
+function openBag(mode){
+  dmode=mode||'bag';renderCart();
+  $('drawer').classList.add('on');$('drawer').setAttribute('aria-hidden','false');$('scrim').classList.add('on');document.body.classList.add('lock');
+  setTimeout(function(){$('bag-close').focus()},50);
+}
+function closeBag(){
+  $('drawer').classList.remove('on');$('drawer').setAttribute('aria-hidden','true');$('scrim').classList.remove('on');
+  if(!$('viewer').classList.contains('on'))document.body.classList.remove('lock');
+}
+$('bag-open').onclick=function(){openBag('bag')};
+$('v-bag').onclick=function(){openBag('bag')};
+$('wish-open').onclick=function(){openBag('saved')};
+$('bag-close').onclick=closeBag;
+$('scrim').onclick=closeBag;
+$('bag-clear').onclick=function(){cart=[];saveCart();renderCart();toast('Bag cleared')};
+document.querySelector('.dtabs').addEventListener('click',function(e){var b=e.target.closest('[data-dm]');if(!b)return;dmode=b.dataset.dm;renderCart()});
+$('dlist').addEventListener('click',function(e){
+  var row=e.target.closest('.crow');if(!row)return;
+  if(dmode==='saved'){
+    var id=row.dataset.id;
+    if(e.target.closest('[data-unsave]')){toggleWish(id)}
+    else if(e.target.closest('[data-open]')){closeBag();openProduct(ITEMS[id],0)}
+    return;
+  }
+  var i=+row.dataset.i,q=e.target.closest('[data-q]');
+  if(q){cart[i].q=Math.max(1,Math.min(9,cart[i].q+(+q.dataset.q)));saveCart();renderCart()}
+  else if(e.target.closest('[data-rm]')){cart.splice(i,1);saveCart();renderCart()}
+});
+
+/* ---------- product page + quick view (one dialog, two modes) ---------- */
+var vs={it:null,ci:0,size:null,qty:1,view:0,opener:null,quick:false,z:1,ox:50,oy:50};
+var ZSTEP=[1,1.8,2.6,3.4];
+function applyZoom(){
+  var im=$('vimg');
+  im.style.transformOrigin=vs.ox+'% '+vs.oy+'%';im.style.transform=vs.z>1?'scale('+vs.z+')':'none';
+  $('vmain').classList.toggle('zoomed',vs.z>1);$('vz-val').textContent=Math.round(vs.z*100)+'%';
+}
+function setZoom(z){vs.z=z;if(z===1){vs.ox=50;vs.oy=50}applyZoom()}
+function vsync(){
+  var it=vs.it,col=it.cols[vs.ci];
+  $('v-code').textContent=it.code+' · '+SECL[it.cat];
+  $('v-crumb').textContent='AD STYLES / '+SECL[it.cat]+' / '+it.name;
+  $('v-name').textContent=it.name;
+  $('v-price').innerHTML=priceHTML(it);
+  $('v-spec').textContent=[it.fabric,it.fit&&it.fit+' fit'].filter(Boolean).join(' · ');
+  $('v-colname').textContent=col.n;
+  $('v-cols').innerHTML=dotsHTML(it,vs.ci,'sw2');
+  $('v-sizelabel').textContent=sizeWord(it);
+  $('v-sizes').innerHTML=sizeBtns(it,'sz',vs.size);
+  $('v-sizenote').textContent=oosOf(it).length?oosOf(it).join(', ')+' sold out':'All sizes in stock';
+  $('v-qty').textContent=vs.qty;
+  $('v-wishbtn').dataset.wish=it.id;$('v-wishbtn').setAttribute('aria-pressed',String(wish.indexOf(it.id)>=0));
+  $('v-wa').href='https://wa.me/918973545849?text='+encodeURIComponent('Hi AD STYLES, I am interested in '+it.code+' '+it.name+' ('+col.n+')'+(vs.size?', size '+sizeTxt(it,vs.size):'')+', '+inr(it.price)+'.');
+  $('v-full').hidden=!vs.quick;
+  var rows='<ul>'+it.det.map(function(r){return '<li><b>'+r[0]+':</b> '+r[1]+'</li>'}).join('')+'</ul>';
+  $('v-det').innerHTML='<details open><summary>Description</summary><p>'+it.desc+'</p></details>'+
+    '<details><summary>Product details</summary>'+rows+'</details>'+
+    '<details><summary>Delivery &amp; care</summary><p>Pick up from the shop in Tennur, Trichy, or ask us to arrange delivery. Delivery time and charges are confirmed with you on WhatsApp.</p><p>'+CARE[it.cat]+'</p></details>';
+}
+function paintGallery(){
+  var it=vs.it,vv=viewsOf(it,vs.ci),v=vv[vs.view];
+  $('vthumbs').innerHTML=vv.map(function(x,i){return '<button type="button" data-vi="'+i+'" aria-pressed="'+(i===vs.view)+'" aria-label="'+esc(x.l)+'"><span class="'+(x.m==='fit'?'fit':'fill')+'"><img alt="" src="'+x.f+'"></span></button>'}).join('');
+  var im=$('vimg');im.src=v.f;im.alt=it.name+', '+it.cols[vs.ci].n+', '+v.l;im.className=v.m==='fit'?'fit':'fill';
+  $('vcap').textContent=v.l+'  ·  '+(vs.view+1)+'/'+vv.length;
+  $('vmain').dataset.n=vv.length;setZoom(1);
+}
+function paintRelated(){
+  var it=vs.it,rel=STORE[it.cat].filter(function(x){return x.id!==it.id}).slice(0,4);
+  $('v-rel').innerHTML=rel.length?'<div class="wrap"><h4>More from '+SECL[it.cat]+'</h4><div class="relgrid">'+rel.map(function(x){
+    var v=viewsOf(x,0)[0];
+    return '<button type="button" class="mini" data-id="'+x.id+'"><span class="mimg '+(v.m==='fit'?'fit':'fill')+'"><img alt="" src="'+v.f+'" loading="lazy"></span><b>'+x.name+'</b><span class="mp">'+priceHTML(x)+'</span></button>';
+  }).join('')+'</div></div>':'';
+}
+function openProduct(it,ci,quick,size){
+  vs.it=it;vs.ci=ci||0;vs.view=0;vs.qty=1;vs.quick=!!quick;vs.opener=document.activeElement;
+  vs.size=size&&oosOf(it).indexOf(size)<0?size:null;
+  var v=$('viewer');v.classList.toggle('quick',!!quick);
+  vsync();paintGallery();if(!quick)paintRelated();
+  v.classList.add('on');v.setAttribute('aria-hidden','false');v.scrollTop=0;document.body.classList.add('lock');
+  setTimeout(function(){(quick?$('v-close'):$('v-back')).focus({preventScroll:true})},60);
+}
+function closeViewer(){
+  var v=$('viewer');if(!v.classList.contains('on'))return;
+  v.classList.remove('on');v.setAttribute('aria-hidden','true');
+  if(!$('drawer').classList.contains('on'))document.body.classList.remove('lock');
+  if(vs.opener&&vs.opener.focus)try{vs.opener.focus({preventScroll:true})}catch(e){}
+}
+$('v-close').onclick=closeViewer;$('v-back').onclick=closeViewer;
+$('viewer').addEventListener('click',function(e){if(e.target===this&&this.classList.contains('quick'))closeViewer()});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){if($('drawer').classList.contains('on'))closeBag();else closeViewer();return}
+  var v=$('viewer');if(!v.classList.contains('on')||$('drawer').classList.contains('on'))return;
+  if(e.key==='Tab'){
+    var f=v.querySelectorAll('button:not([disabled]),a[href],summary'),vis=[];
+    for(var i=0;i<f.length;i++)if(f[i].offsetParent!==null)vis.push(f[i]);
+    var first=vis[0],last=vis[vis.length-1];
+    if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault()}
+    else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault()}
+  }
+  if(e.key==='ArrowRight')stepView(1);
+  if(e.key==='ArrowLeft')stepView(-1);
+});
+$('v-cols').addEventListener('click',function(e){
+  var b=e.target.closest('.sw2');if(!b)return;
+  vs.ci=+b.dataset.ci;vs.view=0;vsync();paintGallery();
+});
+$('v-sizes').addEventListener('click',function(e){
+  var b=e.target.closest('.sz');if(!b||b.disabled)return;
+  vs.size=vs.size===b.dataset.z?null:b.dataset.z;vsync();
+});
+document.querySelector('.vqty').addEventListener('click',function(e){
+  var b=e.target.closest('[data-vq]');if(!b)return;
+  vs.qty=Math.max(1,Math.min(9,vs.qty+(+b.dataset.vq)));$('v-qty').textContent=vs.qty;
+});
+$('v-add').onclick=function(){
+  if(!vs.size){toast('Please select a size');shake($('v-sizes'));return}
+  addToCart(vs.it,vs.ci,vs.size,vs.qty);toast(vs.it.name+' added to your bag');
+};
+$('v-wishbtn').onclick=function(){toggleWish(vs.it.id)};
+$('v-full').onclick=function(e){e.preventDefault();openProduct(vs.it,vs.ci,false,vs.size)};
+$('vthumbs').addEventListener('click',function(e){var b=e.target.closest('[data-vi]');if(!b)return;vs.view=+b.dataset.vi;paintGallery()});
+function stepView(d){
+  if(!vs.it)return;var n=viewsOf(vs.it,vs.ci).length;
+  vs.view=(vs.view+d+n)%n;paintGallery();
+}
+$('v-prev').onclick=function(){stepView(-1)};$('v-next').onclick=function(){stepView(1)};
+$('v-rel').addEventListener('click',function(e){var b=e.target.closest('.mini');if(!b)return;openProduct(ITEMS[b.dataset.id],0,false);$('viewer').scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
+$('vz-in').onclick=function(e){e.stopPropagation();var i=ZSTEP.indexOf(vs.z);setZoom(ZSTEP[Math.min(ZSTEP.length-1,(i<0?0:i)+1)])};
+$('vz-out').onclick=function(e){e.stopPropagation();var i=ZSTEP.indexOf(vs.z);setZoom(ZSTEP[Math.max(0,(i<0?0:i)-1)])};
+(function(){
+  var m=$('vmain'),st=null;
+  m.addEventListener('pointerdown',function(e){if(e.target.closest('button'))return;st={x:e.clientX,y:e.clientY,sx:e.clientX,moved:0,t:e.pointerType}});
+  m.addEventListener('pointermove',function(e){
+    var r=m.getBoundingClientRect();
+    if(e.pointerType==='mouse'){
+      if(vs.z>1){vs.ox=clamp((e.clientX-r.left)/r.width*100,0,100);vs.oy=clamp((e.clientY-r.top)/r.height*100,0,100);applyZoom()}
+      return;
+    }
+    if(!st)return;
+    var dx=e.clientX-st.x,dy=e.clientY-st.y;st.x=e.clientX;st.y=e.clientY;st.moved+=Math.abs(dx)+Math.abs(dy);
+    if(vs.z>1){vs.ox=clamp(vs.ox-dx/r.width*100/(vs.z-1),0,100);vs.oy=clamp(vs.oy-dy/r.height*100/(vs.z-1),0,100);applyZoom()}
+  });
+  m.addEventListener('pointerup',function(e){
+    if(st&&st.t!=='mouse'&&vs.z===1&&Math.abs(e.clientX-st.sx)>50){stepView(e.clientX<st.sx?1:-1);st.moved=99}
+  });
+  m.addEventListener('click',function(e){
+    if(e.target.closest('button'))return;
+    if(st&&st.moved>6){st=null;return}
+    if(vs.z>1)setZoom(1);
+    else{var r=m.getBoundingClientRect();vs.ox=clamp((e.clientX-r.left)/r.width*100,0,100);vs.oy=clamp((e.clientY-r.top)/r.height*100,0,100);vs.z=ZSTEP[1];applyZoom()}
+    st=null;
+  });
+})();
+
+/* ---------- product cards ---------- */
+function makeCard(it){
+  var el=document.createElement('article');el.className='card';el.tabIndex=0;el.dataset.id=it.id;el.dataset.ci='0';el.dataset.size='';
+  el.setAttribute('aria-label',it.name+', '+inr(it.price)+'. Open details');
+  var off=offOf(it);
+  el.innerHTML='<div class="cimg"><img class="main" alt="" decoding="async" loading="lazy" draggable="false"><img class="alt" alt="" aria-hidden="true" decoding="async" loading="lazy" draggable="false">'+
+    (off?'<span class="badge off">-'+off+'%</span>':'')+(it.badge?'<span class="badge tag">'+it.badge+'</span>':'')+
+    '<button class="wish" type="button" data-wish="'+it.id+'" aria-pressed="'+(wish.indexOf(it.id)>=0)+'" aria-label="Save '+esc(it.name)+' to wishlist">'+HEART+'</button>'+
+    '<button class="qv" type="button" tabindex="-1">Quick view</button></div>'+
+    '<div class="cbody"><div class="cmeta"><span class="code">'+it.code+' · '+(it.sub||SECL[it.cat])+'</span></div>'+
+    '<h3>'+it.name+'</h3><p class="cprice">'+priceHTML(it)+'</p>'+
+    '<div class="ccol"><div class="cdots" role="group" aria-label="Colours">'+dotsHTML(it,0,'cdot')+'</div><span class="cname"></span></div>'+
+    '<div class="csizes" role="group" aria-label="'+sizeWord(it)+'">'+sizeBtns(it,'csz','')+'</div>'+
+    '<button class="addc" type="button">Add to cart</button></div>';
+  setCardImgs(el,it,0);
+  return el;
+}
+function setCardImgs(el,it,ci){
+  var vv=viewsOf(it,ci),a=vv[0],b=vv[1]||vv[0];
+  var m=el.querySelector('.main'),h=el.querySelector('.alt');
+  m.src=a.f;m.className='main '+(a.m==='fit'?'fit':'fill');m.alt=it.name+', '+it.cols[ci].n;
+  h.src=b.f;h.className='alt '+(b.m==='fit'?'fit':'fill');
+  el.dataset.ci=ci;
+  el.querySelector('.cname').textContent=it.cols[ci].n;
+  el.querySelectorAll('.cdot').forEach(function(d){d.setAttribute('aria-pressed',String(+d.dataset.ci===ci))});
+}
+function wireGrid(grid){
+  function act(e){
+    var card=e.target.closest('.card');if(!card)return;
+    var it=ITEMS[card.dataset.id],ci=+card.dataset.ci,b;
+    if((b=e.target.closest('.cdot'))){setCardImgs(card,it,+b.dataset.ci);return}
+    if(e.target.closest('.wish')){toggleWish(it.id);return}
+    if(e.target.closest('.qv')){openProduct(it,ci,true,card.dataset.size);return}
+    if((b=e.target.closest('.csz'))){
+      if(b.disabled)return;
+      card.dataset.size=card.dataset.size===b.dataset.z?'':b.dataset.z;
+      card.querySelectorAll('.csz').forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.z===card.dataset.size))});
+      return;
+    }
+    if((b=e.target.closest('.addc'))){
+      if(!card.dataset.size){toast('Select a size first');shake(card.querySelector('.csizes'));return}
+      addToCart(it,ci,card.dataset.size,1);toast(it.name+' added to your bag');
+      b.textContent='Added';b.classList.add('ok');setTimeout(function(){b.textContent='Add to cart';b.classList.remove('ok')},1400);
+      return;
+    }
+    openProduct(it,ci,false,card.dataset.size);
+  }
+  grid.addEventListener('click',act);
+  grid.addEventListener('keydown',function(e){
+    if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('card')){e.preventDefault();openProduct(ITEMS[e.target.dataset.id],+e.target.dataset.ci,false,e.target.dataset.size)}
+  });
+}
+function sorter(k){
+  return {low:function(a,b){return a.price-b.price},high:function(a,b){return b.price-a.price},name:function(a,b){return a.name.localeCompare(b.name)},off:function(a,b){return offOf(b)-offOf(a)}}[k];
+}
+var SORTS='<option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="off">Biggest discount</option><option value="name">Name: A to Z</option>';
+var NOTE='<p class="note">Sample prices, discounts and sizes. Ask at the shop for today&rsquo;s stock.</p>';
+function listShop(body,key,chips){
+  var items=STORE[key],st={f:'all',s:'featured'};
+  body.innerHTML='<div class="tools"><div class="fchips" role="group" aria-label="Filter"></div><p class="count"></p><label class="tright">Sort<select class="sel" aria-label="Sort products">'+SORTS+'</select></label></div><div class="grid"></div>'+NOTE;
+  var ch=body.querySelector('.fchips'),grid=body.querySelector('.grid'),sel=body.querySelector('.sel'),cnt=body.querySelector('.count');
+  if(chips)ch.innerHTML=chips.map(function(c){return '<button type="button" class="fchip" data-f="'+c[0]+'" aria-pressed="'+(c[0]==='all')+'">'+c[1]+'</button>'}).join('');
+  else ch.remove();
+  function paint(){
+    var list=items.filter(function(it){return st.f==='all'||it.kind===st.f});
+    var so=sorter(st.s);if(so)list=list.slice().sort(so);
+    grid.innerHTML='';cnt.textContent=list.length+(list.length===1?' style':' styles');
+    if(!list.length){grid.innerHTML='<p class="empty">No styles in this filter yet.</p>';return}
+    list.forEach(function(it){grid.appendChild(makeCard(it))});
+  }
+  if(chips)ch.addEventListener('click',function(e){var b=e.target.closest('.fchip');if(!b)return;st.f=b.dataset.f;ch.querySelectorAll('.fchip').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});paint()});
+  sel.onchange=function(){st.s=sel.value;paint()};
+  wireGrid(grid);paint();
+}
+function shopSection(cfg){
+  var sec=document.createElement('section');
+  sec.className='band shop open '+cfg.theme;sec.id='sec-'+cfg.key;sec.setAttribute('aria-labelledby','h-'+cfg.key);
+  sec.innerHTML='<div class="wrap"><div class="sechead"><div><p class="eyebrow rv">0'+cfg.n+' / 05 &middot; Collection</p>'+
+    '<h2 class="h2 rv" id="h-'+cfg.key+'" style="--i:1">'+cfg.hl+'</h2><p class="lead rv" style="--i:2">'+cfg.lead+'</p></div>'+
+    '<div class="rcount rv" style="--i:3"><b>'+pad(STORE[cfg.key].length)+'</b>styles</div></div><div class="shopbody"></div></div>';
+  $('shops').appendChild(sec);
+  return sec.querySelector('.shopbody');
+}
+
+/* ---------- hanger showrooms: real product photographs on a clothing rail ---------- */
+var RACKS={
+  shirts:{n:1,theme:'dark',label:'Shirts',scale:[.56,.5,.44],gap:90,
+    hl:'Crisp, <em>checks &amp; plains.</em>',lead:'Real shirts on wooden hangers: stripes, checks, plains and linen. Slide along the rail, hover to make one swing, tap to open it.',
+    chips:[['all','All'],['cotton','Cotton'],['linen','Linen']]},
+  tshirts:{n:2,theme:'light',label:'T-Shirts',scale:[.62,.56,.5],gap:110,
+    hl:'Easy, <em>everyday tees.</em>',lead:'Oversized tees with prints and plains, hung on a rail exactly as they sit in the shop. Slide along, tap one to open it.'}
+};
+function rackPieces(key){
+  var out=[],x=0,g=RACKS[key].gap;
+  if(key==='shirts'){
+    STORE.shirts.forEach(function(it){it.cols.forEach(function(col,ci){
+      var geo=GEO[col.rack];if(!geo)return;
+      out.push({it:it,ci:ci,src:IMGDIR+col.rack+'.webp',x:x,w:geo.w,h:geo.h,hx:geo.hx,rail:geo.rail,z:1});
+      x+=geo.w+g;
+    })});
+    return out;
+  }
+  var r1max=0;
+  Object.keys(GEO.rack).forEach(function(s){var d=GEO.rack[s];if(d.row==='r1')r1max=Math.max(r1max,d.x+d.w)});
+  STORE.tshirts.forEach(function(it){it.cols.forEach(function(col,ci){
+    var d=GEO.rack[col.rack];if(!d)return;
+    out.push({it:it,ci:ci,src:IMGDIR+'rack-'+col.rack+'.webp',x:d.x+(d.row==='r2'?r1max+g:0),w:d.w,h:d.h,hx:d.hx,rail:d.rail,z:d.z});
+  })});
+  return out;
+}
+function buildRack(key,host){
+  var cfg=RACKS[key],pcs=rackPieces(key),total=0,maxB=0;
+  pcs.forEach(function(p){total=Math.max(total,p.x+p.w);maxB=Math.max(maxB,p.h-p.rail)});
+  var cx=pcs.map(function(p){return p.x+p.hx});
+  var html='',posts=[0,total];
+  for(var px=1400;px<total-700;px+=1400)posts.push(px);
+  html+='<i class="rail"></i>'+posts.map(function(p){return '<i class="post" style="left:calc(var(--pad) + var(--s)*'+(p===0?-26:p===total?total+10:p)+'px)"></i>'}).join('');
+  pcs.forEach(function(p,i){
+    var nm=p.it.name+(p.it.cols.length>1?' – '+p.it.cols[p.ci].n:'');
+    var sty='left:calc(var(--pad) + var(--s)*'+p.x+'px);top:calc(var(--rt) - var(--s)*'+p.rail+'px);width:calc(var(--s)*'+p.w+'px);height:calc(var(--s)*'+p.h+'px);z-index:'+p.z+';--ox:'+(p.hx/p.w*100).toFixed(1)+'%;--oy:'+(p.rail/p.h*100).toFixed(1)+'%;--k:'+i;
+    html+='<button type="button" class="hg" data-id="'+p.it.id+'" data-ci="'+p.ci+'" style="'+sty+'" aria-label="'+esc(nm)+', '+inr(p.it.price)+'. Open details"><span class="hgi"><img src="'+p.src+'" alt="'+esc(nm)+' on a wooden hanger" width="'+p.w+'" height="'+p.h+'" decoding="async" draggable="false"></span></button>';
+  });
+  pcs.forEach(function(p,i){
+    var near=Infinity;cx.forEach(function(c,j){if(j!==i)near=Math.min(near,Math.abs(c-cx[i]))});
+    var tw=clamp(near-10,150,330),nm=p.it.name+(p.it.cols.length>1?' · '+p.it.cols[p.ci].n:'');
+    html+='<button type="button" class="ttag" data-id="'+p.it.id+'" data-ci="'+p.ci+'" tabindex="-1" style="left:calc(var(--pad) + var(--s)*'+(cx[i]-tw/2)+'px);top:calc(var(--rt) + var(--s)*'+maxB+'px + 18px);width:calc(var(--s)*'+tw+'px)"><span class="tn">'+nm+'</span><span class="tp">'+priceHTML(p.it)+'</span></button>';
+  });
+  host.innerHTML='<div class="rack" tabindex="0" role="group" aria-label="'+cfg.label+' hanging on a rail. Scroll sideways to see more."><div class="rtrack" style="width:calc(2*var(--pad) + var(--s)*'+total+'px);height:calc(var(--rt) + var(--s)*'+maxB+'px + 120px)">'+html+'</div></div>'+
+    '<button class="round rarrow prev" type="button" aria-label="Previous '+cfg.label+'">&larr;</button><button class="round rarrow next" type="button" aria-label="Next '+cfg.label+'">&rarr;</button>';
+  var rack=host.querySelector('.rack'),track=host.querySelector('.rtrack');
+  function setScale(){
+    var w=window.innerWidth,s=w>=1100?cfg.scale[0]:w>=700?cfg.scale[1]:cfg.scale[2];
+    host.style.setProperty('--s',s);
+    host.querySelector('.prev').style.visibility=rack.scrollWidth>rack.clientWidth+4?'':'hidden';
+    host.querySelector('.next').style.visibility=host.querySelector('.prev').style.visibility;
+  }
+  setScale();window.addEventListener('resize',setScale);
+  function edge(){
+    var max=rack.scrollWidth-rack.clientWidth;
+    host.classList.toggle('at-start',rack.scrollLeft<4);host.classList.toggle('at-end',rack.scrollLeft>max-4);
+  }
+  rack.addEventListener('scroll',edge,{passive:true});edge();setTimeout(edge,300);
+  host.querySelector('.prev').onclick=function(){rack.scrollBy({left:-rack.clientWidth*.75,behavior:reduce?'auto':'smooth'})};
+  host.querySelector('.next').onclick=function(){rack.scrollBy({left:rack.clientWidth*.75,behavior:reduce?'auto':'smooth'})};
+  rack.addEventListener('keydown',function(e){
+    if(e.target!==rack)return;
+    if(e.key==='ArrowRight'){rack.scrollBy({left:260,behavior:'smooth'});e.preventDefault()}
+    if(e.key==='ArrowLeft'){rack.scrollBy({left:-260,behavior:'smooth'});e.preventDefault()}
+  });
+  /* drag to slide along the rail with a mouse; touch uses native scrolling */
+  var dr=null,dragged=false;
+  rack.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;dr={x:e.clientX,l:rack.scrollLeft};dragged=false});
+  window.addEventListener('pointermove',function(e){
+    if(!dr)return;var dx=e.clientX-dr.x;
+    if(Math.abs(dx)>6){dragged=true;rack.classList.add('drag')}
+    if(dragged)rack.scrollLeft=dr.l-dx;
+  });
+  window.addEventListener('pointerup',function(){dr=null;rack.classList.remove('drag')});
+  rack.addEventListener('click',function(e){
+    if(dragged){dragged=false;e.stopPropagation();e.preventDefault();return}
+    var b=e.target.closest('.hg,.ttag');if(!b)return;
+    openProduct(ITEMS[b.dataset.id],+b.dataset.ci,false);
+  },true);
+  /* hovering a hanger or its price tag lights up both */
+  function hot(e,on){
+    var b=e.target.closest&&e.target.closest('.hg,.ttag');if(!b)return;
+    track.querySelectorAll('[data-id="'+b.dataset.id+'"][data-ci="'+b.dataset.ci+'"]').forEach(function(x){
+      x.classList.toggle('hot',on);
+      if(on&&x.classList.contains('hg')&&!reduce){
+        var g=x.firstChild;if(g.classList.contains('swing'))return;
+        g.classList.add('swing');g.addEventListener('animationend',function f(){g.classList.remove('swing');g.removeEventListener('animationend',f)});
+      }
+    });
+  }
+  track.addEventListener('mouseover',function(e){hot(e,true)});
+  track.addEventListener('mouseout',function(e){hot(e,false)});
+  track.addEventListener('focusin',function(e){hot(e,true)});
+  track.addEventListener('focusout',function(e){hot(e,false)});
+  new IntersectionObserver(function(en,ob){if(en[0].isIntersecting){host.classList.add('in');ob.disconnect();setTimeout(function(){host.classList.add('settled')},900+pcs.length*150+2800)}},{threshold:.25}).observe(host);
+}
+(function buildRooms(){
+  var host=$('rooms');
+  ['shirts','tshirts'].forEach(function(key){
+    var c=RACKS[key],items=STORE[key],sec=document.createElement('section');
+    sec.className='band room '+c.theme+' open';sec.id='sec-'+key;sec.setAttribute('aria-labelledby','h-'+key);
+    sec.innerHTML=
+      '<div class="wrap"><div class="sechead"><div>'+
+      '<p class="eyebrow rv">0'+c.n+' / 05 &middot; Collection</p>'+
+      '<h2 class="h2 rv" id="h-'+key+'" style="--i:1">'+c.hl+'</h2>'+
+      '<p class="lead rv" style="--i:2">'+c.lead+'</p></div>'+
+      '<div class="rcount rv" style="--i:3"><b>'+pad(items.length)+'</b>styles</div></div></div>'+
+      '<div class="rackwrap" id="rw-'+key+'"></div>'+
+      '<div class="wrap"><p class="rhint">Slide along the rail &middot; tap any piece for photos, sizes and price</p><div class="shopbody"></div></div>';
+    host.appendChild(sec);
+    buildRack(key,sec.querySelector('.rackwrap'));
+    listShop(sec.querySelector('.shopbody'),key,c.chips);
+  });
+})();
+
+/* ---------- trousers + jeans: product grids ---------- */
+listShop(shopSection({key:'pants',n:3,theme:'light2',hl:'Trousers, <em>cut to fit.</em>',lead:'Cargo trousers, straight-fit trousers and khaki chinos. Pick a colour, check the sizes, open any style for more photos.'}),'pants',[['all','All'],['cargo','Cargo'],['straight','Straight'],['chino','Chinos']]);
+listShop(shopSection({key:'jeans',n:4,theme:'dark',hl:'Denim, <em>every wash.</em>',lead:'Washed denim in charcoal and mid blue. Five pockets, contrast stitching and a clean hem.'}),'jeans',null);
+
+/* ---------- shoes: store layout with type tabs and a filter rail ---------- */
+(function shoeShop(){
+  var body=shopSection({key:'shoes',n:5,theme:'light',hl:'Shoes, <em>step by step.</em>',lead:'Sneakers and formal shoes. Filter by type, size, colour and price, then open any pair for more photos.'}),items=STORE.shoes;
+  var CATL=[['all','All'],['sneaker','Sneakers'],['formal','Formal']];
+  var prices=items.map(function(i){return i.price}),PMIN=Math.floor(Math.min.apply(null,prices)/100)*100,PMAX=Math.ceil(Math.max.apply(null,prices)/100)*100;
+  var CGHEX={White:'#f1efe9',Black:'#1a1816'};
+  var st={t:'all',sizes:[],cols:[],max:PMAX,s:'featured'};
+  body.innerHTML='<div class="cats" role="group" aria-label="Shoe type"><button class="round" type="button" data-sc="-1" aria-label="Scroll left">&larr;</button><div class="cats-in"></div><button class="round" type="button" data-sc="1" aria-label="Scroll right">&rarr;</button></div>'+
+    '<div class="tools"><button class="btn sm fbtn" type="button" id="fbtn">Filters</button><p class="count" id="scount" style="margin:0"></p><label class="tright">Sort<select class="sel" aria-label="Sort shoes">'+SORTS+'</select></label></div>'+
+    '<div class="sgrid"><aside class="fil" id="fil" aria-label="Filters"></aside><div class="grid shoes"></div></div>'+NOTE;
+  var catsIn=body.querySelector('.cats-in'),grid=body.querySelector('.grid'),fil=body.querySelector('#fil'),sel=body.querySelector('.sel');
+  catsIn.innerHTML=CATL.map(function(c){return '<button type="button" data-t="'+c[0]+'" aria-pressed="'+(c[0]==='all')+'">'+c[1]+'</button>'}).join('');
+  var groups=[];items.forEach(function(it){it.cols.forEach(function(c){if(c.g&&groups.indexOf(c.g)<0)groups.push(c.g)})});
+  function filHTML(){
+    return '<div class="fgroup"><h4>Type</h4><div class="checks">'+CATL.slice(1).map(function(c){var n=items.filter(function(i){return i.type===c[0]}).length;return '<label><input type="checkbox" data-ft="'+c[0]+'"'+(st.t===c[0]?' checked':'')+'>'+c[1]+'<small>'+n+'</small></label>'}).join('')+'</div></div>'+
+      '<div class="fgroup"><h4>Size (UK)</h4><div class="fsz">'+SZS.map(function(z){return '<button type="button" data-fz="'+z+'" aria-pressed="'+(st.sizes.indexOf(z)>=0)+'">'+z+'</button>'}).join('')+'</div></div>'+
+      '<div class="fgroup"><h4>Colour</h4><div class="fcol">'+groups.map(function(g){return '<button type="button" data-fc="'+g+'" title="'+g+'" aria-label="'+g+'" aria-pressed="'+(st.cols.indexOf(g)>=0)+'" style="background:'+CGHEX[g]+'"></button>'}).join('')+'</div></div>'+
+      '<div class="fgroup"><h4>Price</h4><input class="rng" id="frng" type="range" min="'+PMIN+'" max="'+PMAX+'" step="100" value="'+st.max+'" aria-label="Maximum price"><div class="rngv"><span>'+inr(PMIN)+'</span><span id="frv">Up to '+inr(st.max)+'</span></div></div>'+
+      '<div class="fgroup"><button class="btn sm" type="button" id="fclear" style="width:100%">Clear filters</button></div>';
+  }
+  function paint(){
+    var list=items.filter(function(it){
+      if(st.t!=='all'&&it.type!==st.t)return false;
+      if(it.price>st.max)return false;
+      if(st.sizes.length&&!st.sizes.some(function(z){return oosOf(it).indexOf(z)<0}))return false;
+      if(st.cols.length&&!it.cols.some(function(c){return st.cols.indexOf(c.g)>=0}))return false;
+      return true;
+    });
+    var so=sorter(st.s);if(so)list=list.slice().sort(so);
+    grid.innerHTML='';
+    body.querySelector('#scount').textContent=list.length+(list.length===1?' product':' products');
+    if(!list.length){grid.innerHTML='<p class="empty">No shoes match these filters.</p>';return}
+    list.forEach(function(it){grid.appendChild(makeCard(it))});
+  }
+  function sync(){
+    catsIn.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.t===st.t))});
+    var open=fil.classList.contains('open');fil.innerHTML=filHTML();fil.classList.toggle('open',open);
+    paint();
+  }
+  catsIn.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;st.t=b.dataset.t;sync()});
+  body.querySelector('.cats').addEventListener('click',function(e){var b=e.target.closest('[data-sc]');if(b)catsIn.scrollBy({left:(+b.dataset.sc)*220,behavior:'smooth'})});
+  fil.addEventListener('click',function(e){
+    var z=e.target.closest('[data-fz]'),c=e.target.closest('[data-fc]'),k=e.target.closest('input[data-ft]');
+    if(z){var i=st.sizes.indexOf(z.dataset.fz);if(i>=0)st.sizes.splice(i,1);else st.sizes.push(z.dataset.fz);sync()}
+    else if(c){var j=st.cols.indexOf(c.dataset.fc);if(j>=0)st.cols.splice(j,1);else st.cols.push(c.dataset.fc);sync()}
+    else if(k){st.t=k.checked?k.dataset.ft:'all';sync()}
+    else if(e.target.id==='fclear'){st.t='all';st.sizes=[];st.cols=[];st.max=PMAX;sync()}
+  });
+  fil.addEventListener('input',function(e){if(e.target.id==='frng'){st.max=+e.target.value;$('frv').textContent='Up to '+inr(st.max);paint()}});
+  sel.onchange=function(){st.s=sel.value;paint()};
+  body.querySelector('#fbtn').onclick=function(){fil.classList.toggle('open')};
+  wireGrid(grid);sync();
+})();
+
+/* ---------- marquee + contact ---------- */
+(function(){
+  var words=['Shirts','T-Shirts','Trousers','Jeans','Shoes','Cotton','Linen','Denim','Leather','Everyday'];
+  var one=words.map(function(w){return '<span>'+w+'</span><span>✕</span>'}).join('');
+  $('track').innerHTML=one+one;
+})();
+$('copy-ph').onclick=function(){copyText('+91 89735 45849','Number copied')};
+
+/* ---------- HERO: the letters of the logo glide together as you scroll ---------- */
+var heroState={p:0,done:false};
+(function(){
+  var sec=$('hero'),stage=$('logo-stage'),hint=$('hint'),inner=$('hero-body'),veil=sec.querySelector('.hl-veil');
+  var els=Array.prototype.slice.call(stage.querySelectorAll('.lp'));
+  var VW=692,ASM=.5;
+  /* where each piece waits before you scroll, as a share of the logo width: x, y, tilt.
+     Order: A, D with its swoosh, left foot, S, ty, l, e, s. Small moves so it never turns messy. */
+  var OFF=[[-.055,-.085,-2.5],[-.05,.055,-1.5],[-.07,.075,-3],[-.095,.045,-3],[-.01,-.075,2.5],[.025,-.06,3],[.05,.058,-3],[.075,-.045,4]];
+  var kx=1,sc=1,kyU=1,kyD=1,eye=sec.querySelector('.hero-eye'),tag=sec.querySelector('.hero-tag'),rule=sec.querySelector('.hero-rule');
+  function fit(){
+    /* keep the moves inside the screen and clear of the text around the logo */
+    var r=stage.getBoundingClientRect(),sw=r.width||1;
+    sc=sw/VW;
+    kx=Math.min(1,Math.max(.2,((window.innerWidth-sw)/2-6)/(.1*sw)));
+    var below=(rule&&rule.offsetParent?rule:tag).getBoundingClientRect().top-r.bottom;
+    kyU=Math.min(1,Math.max(.25,(r.top-eye.getBoundingClientRect().bottom-8)/(.085*sw)));
+    kyD=Math.min(1,Math.max(.25,(below-8)/(.075*sw)));
+  }
+  fit();
+  var pcs=els.map(function(el,i){
+    var o=OFF[i]||[0,0,0],s0=i*.04;
+    return {el:el,x:o[0]*VW,y:o[1]*VW,r:o[2],s0:s0,s1:s0+.22};
+  });
+  var intro=pcs.map(function(){return 1});
+  var target=0,cur=0,raf=0,shone=false;
+  function paint(p){
+    heroState.p=p;
+    pcs.forEach(function(q,i){
+      var t=Math.min(1,Math.max(0,(p-q.s0)/(q.s1-q.s0))),k=Math.pow(1-t,3);
+      q.el.style.transform=k<.0004?'none':'translate3d('+(q.x*k*kx*sc).toFixed(2)+'px,'+(q.y*k*sc*(q.y<0?kyU:kyD)).toFixed(2)+'px,0) rotate('+(q.r*k).toFixed(2)+'deg)';
+      q.el.style.opacity=intro[i].toFixed(3);
+    });
+    var done=p>=ASM-.004;
+    heroState.done=done;
+    stage.classList.toggle('final',done);
+    if(done&&!shone){shone=true;stage.classList.add('shine')}
+    if(p<.2&&shone){shone=false;stage.classList.remove('shine')}
+    hint.style.opacity=(1-Math.min(1,p/.08)).toFixed(3);
+    var ex=reduce?0:Math.min(1,Math.max(0,(p-.62)/.38));
+    veil.style.opacity=ex.toFixed(3);
+    veil.style.display=ex?'':'none';
+    inner.style.transform=ex?'translate3d(0,'+(-ex*3.5).toFixed(2)+'vh,0)':'';
+  }
+  function step(){
+    raf=0;var d=target-cur;cur=Math.abs(d)<.0004?target:cur+d*.14;
+    paint(cur);if(cur!==target)raf=requestAnimationFrame(step);
+  }
+  function read(){
+    var r=sec.getBoundingClientRect(),span=r.height-window.innerHeight;
+    target=span>0?Math.min(1,Math.max(0,-r.top/span)):1;
+    if(!raf)raf=requestAnimationFrame(step);
+  }
+  heroState.read=read;
+  window.addEventListener('resize',function(){fit();paint(cur)});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){fit();paint(cur)});
+  if(reduce){sec.classList.add('still');cur=target=1;paint(1);return}
+  /* the pieces fade in one after another when the page opens */
+  if(window.scrollY<40){
+    intro=pcs.map(function(){return 0});
+    var t0=0;
+    (function run(now){
+      if(!t0)t0=now;
+      var all=true;
+      pcs.forEach(function(q,i){
+        var t=Math.min(1,Math.max(0,(now-t0-80-i*90)/780));
+        intro[i]=1-Math.pow(1-t,3);if(t<1)all=false;
+      });
+      paint(cur);
+      if(!all)requestAnimationFrame(run);
+    })(performance.now());
+  }
+  paint(0);read();
+})();
+
+/* ---------- scroll: progress, nav highlight, reveals ---------- */
+var navLinks=Array.prototype.map.call(document.querySelectorAll('#navlinks a'),function(a){return {a:a,el:$(a.dataset.go)}});
+var tick=false;
+function onScroll(){
+  if(tick)return;tick=true;
+  requestAnimationFrame(function(){
+    tick=false;
+    var max=document.documentElement.scrollHeight-window.innerHeight,vh=window.innerHeight;
+    document.documentElement.style.setProperty('--p',max>0?(window.scrollY/max).toFixed(4):0);
+    heroState.read&&heroState.read();
+    var past=$('hero').getBoundingClientRect().bottom<vh*.6;
+    document.body.classList.toggle('logo-in',heroState.done||past);
+    var act=null;
+    navLinks.forEach(function(n){var r=n.el.getBoundingClientRect();if(r.top<vh*.45)act=n});
+    navLinks.forEach(function(n){n.a.setAttribute('aria-current',String(n===act&&n.a.dataset.go!=='hero'))});
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);
+document.querySelectorAll('[data-go]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    $('nav').classList.remove('open');$('burger').setAttribute('aria-expanded','false');
+    var id=a.dataset.go;
+    if(id==='hero'){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});return}
+    var el=$(id);if(el)el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  });
+});
+$('burger').onclick=function(){var o=$('nav').classList.toggle('open');this.setAttribute('aria-expanded',String(o))};
+var io=new IntersectionObserver(function(en){
+  en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}});
+},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv,.band.open').forEach(function(el){io.observe(el)});
+
+/* ---------- boot ---------- */
+renderCart();
+onScroll();
+
+})();
+</script>
+
+</body></html>
